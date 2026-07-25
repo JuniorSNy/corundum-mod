@@ -31,7 +31,7 @@ foreach inst [get_cells -hier -filter {(ORIG_REF_NAME == cmac_gty_wrapper || REF
     }
 
     # False paths to async input pins on CMAC
-    set cmac_cells [get_cells -hierarchical -filter "PARENT == $inst/cmac_inst/inst/i_cmac_usplus_top"]
+    set cmac_cells [get_cells -quiet -hierarchical -filter "PARENT =~ ${inst}/*/cmac_inst/inst/i_cmac_usplus_top"]
     set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ RX_RESET"]
     set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ TX_RESET"]
     set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ RX_SERDES_RESET*"]
