@@ -1775,6 +1775,16 @@ if (RS_FEC_ENABLE) begin : gen_cmac_rsfec
     .drp_rdy(drp_rdy_cmac)
     );
 end else begin : gen_cmac_no_rsfec
+    assign cmac_stat_rx_rsfec_am_lock = 4'd0;
+    assign cmac_stat_rx_rsfec_err_count_inc = 12'd0;
+    assign cmac_stat_rx_rsfec_hi_ser = 1'b0;
+    assign cmac_stat_rx_rsfec_lane_alignment_status = 1'b0;
+    assign cmac_stat_rx_rsfec_lane_fill = 56'd0;
+    assign cmac_stat_rx_rsfec_lane_mapping = 8'd0;
+    assign cmac_stat_rx_rsfec_cw_inc = 1'b0;
+    assign cmac_stat_rx_rsfec_corrected_cw_inc = 1'b0;
+    assign cmac_stat_rx_rsfec_uncorrected_cw_inc = 1'b0;
+
     cmac_usplus cmac_inst (
     .txdata_in(cmac_txdata),
     .txctrl0_in(cmac_txctrl0),
