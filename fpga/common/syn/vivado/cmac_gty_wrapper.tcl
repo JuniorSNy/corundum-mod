@@ -7,34 +7,58 @@ foreach inst [get_cells -hier -filter {(ORIG_REF_NAME == cmac_gty_wrapper || REF
     puts "Inserting timing constraints for cmac_gty_wrapper instance $inst"
 
     proc constrain_sync_chain {inst driver args} {
-        set sync_ffs [get_cells -hier [concat $driver $args] -filter "PARENT == $inst"]
+        set sync_ffs [get_cells -quiet -hier [concat $driver $args] -filter "PARENT == $inst"]
+        set driver_ffs [get_cells -quiet "$inst/$driver"]
+        set capture_ffs [get_cells -quiet "$inst/[lindex $args 0]"]
 
-        if {[llength $sync_ffs]} {
+        if {[llength $sync_ffs] && [llength $driver_ffs] && [llength $capture_ffs]} {
             set_property ASYNC_REG TRUE $sync_ffs
 
-            set src_clk [get_clocks -of_objects [get_cells "$inst/$driver"]]
+            set src_clk [get_clocks -of_objects $driver_ffs]
 
             set src_clk_period [if {[llength $src_clk]} {get_property -min PERIOD $src_clk} {expr 1.0}]
 
-            set_max_delay -from [get_cells "$inst/$driver"] -to [get_cells "$inst/[lindex $args 0]"] -datapath_only $src_clk_period
+            set_max_delay -from $driver_ffs -to $capture_ffs -datapath_only $src_clk_period
         }
     }
 
     proc constrain_sync_chain_async {inst driver args} {
-        set sync_ffs [get_cells -hier [concat $driver $args] -filter "PARENT == $inst"]
+        set sync_ffs [get_cells -quiet -hier [concat $driver $args] -filter "PARENT == $inst"]
+        set driver_pins [get_pins -quiet "$inst/$driver/D"]
 
-        if {[llength $sync_ffs]} {
+        if {[llength $sync_ffs] && [llength $driver_pins]} {
             set_property ASYNC_REG TRUE $sync_ffs
 
-            set_false_path -to [get_pins "$inst/$driver/D"]
+            set_false_path -to $driver_pins
         }
     }
 
-    # False paths to async input pins on CMAC
-    set cmac_cells [get_cells -quiet -hierarchical -filter "PARENT =~ ${inst}/*/cmac_inst/inst/i_cmac_usplus_top"]
-    set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ RX_RESET"]
-    set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ TX_RESET"]
-    set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ RX_SERDES_RESET*"]
+    # False paths to async input pins on CMAC.  The CMAC instance is under one
+    # of two generate blocks, depending on whether RS-FEC is enabled.
+    set cmac_cells {}
+    foreach gen_name {gen_cmac_rsfec gen_cmac_no_rsfec} {
+        set cmac_parent "$inst/$gen_name.cmac_inst/inst/i_cmac_usplus_top"
+        set cmac_cells [concat $cmac_cells \
+            [get_cells -quiet -hierarchical -filter "PARENT == $cmac_parent"]]
+    }
+
+    if {![llength $cmac_cells]} {
+        error "Failed to locate CMAC cells for cmac_gty_wrapper instance $inst"
+    }
+
+    set rx_reset_pins [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME == RX_RESET"]
+    set tx_reset_pins [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME == TX_RESET"]
+    set rx_serdes_reset_pins [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ RX_SERDES_RESET*"]
+
+    if {![llength $rx_reset_pins] || ![llength $tx_reset_pins] || ![llength $rx_serdes_reset_pins]} {
+        error "Failed to locate CMAC reset pins for cmac_gty_wrapper instance $inst"
+    }
+
+    puts "Found [llength $cmac_cells] CMAC cells and [llength $rx_serdes_reset_pins] RX SERDES reset pins for $inst"
+
+    set_false_path -to $rx_reset_pins
+    set_false_path -to $tx_reset_pins
+    set_false_path -to $rx_serdes_reset_pins
     set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ CTL_RX_ENABLE_PPP"]
     set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ CTL_RX_CHECK_SA_PPP"]
     set_false_path -quiet -to [get_pins -quiet -of $cmac_cells -filter "REF_PIN_NAME =~ CTL_RX_CHECK_OPCODE_PPP"]

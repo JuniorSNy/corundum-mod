@@ -36,5 +36,5 @@ add_cells_to_pblock [get_pblocks pblock_eth] [get_cells -quiet "core_inst/core_i
 resize_pblock [get_pblocks pblock_eth] -add {CLOCKREGION_X0Y8:CLOCKREGION_X0Y11}
 
 # CMACs
-set_property LOC CMACE4_X0Y8 [get_cells -hierarchical -filter {NAME =~ qsfp0_cmac_inst/cmac_inst/inst/i_cmac_usplus_top/* && REF_NAME==CMACE4}]
-set_property LOC CMACE4_X0Y7 [get_cells -hierarchical -filter {NAME =~ qsfp1_cmac_inst/cmac_inst/inst/i_cmac_usplus_top/* && REF_NAME==CMACE4}]
+set_property LOC CMACE4_X0Y8 [get_cells -hierarchical -filter {(NAME =~ qsfp0_cmac_inst/cmac_inst/inst/i_cmac_usplus_top/* || NAME =~ qsfp0_cmac_inst/gen_cmac_rsfec.cmac_inst/inst/i_cmac_usplus_top/* || NAME =~ qsfp0_cmac_inst/gen_cmac_no_rsfec.cmac_inst/inst/i_cmac_usplus_top/*) && REF_NAME == CMACE4}]
+set_property LOC CMACE4_X0Y7 [get_cells -hierarchical -filter {(NAME =~ qsfp1_cmac_inst/cmac_inst/inst/i_cmac_usplus_top/* || NAME =~ qsfp1_cmac_inst/gen_cmac_rsfec.cmac_inst/inst/i_cmac_usplus_top/* || NAME =~ qsfp1_cmac_inst/gen_cmac_no_rsfec.cmac_inst/inst/i_cmac_usplus_top/*) && REF_NAME == CMACE4}]
