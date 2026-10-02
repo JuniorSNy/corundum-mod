@@ -1,0 +1,13 @@
+sim_build/
+__pycache__/
+.pytest_cache/
+*.vvp
+*.vcd
+*.fst
+*.o
+*.ko
+*.mod*
+.*.cmd
+Module.symvers
+modules.order
+utils/raw_packet_send
