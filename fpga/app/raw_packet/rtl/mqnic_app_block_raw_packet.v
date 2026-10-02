@@ -22,6 +22,11 @@
  */
 module mqnic_app_block #
 (
+    `ifndef APP_CUSTOM_PARAMS_ENABLE
+    parameter RAW_TX_OP_TABLE_SIZE = 1,
+    parameter RAW_TX_WATCHDOG_CYCLES = 0,
+    `endif
+
     // Structural configuration
     parameter IF_COUNT = 1,
     parameter PORTS_PER_IF = 1,
@@ -628,12 +633,12 @@ end
 
 // One raw TX QP on physical port 0, in the app clock domain.
 localparam RAW_TX_PORT = 0;
-localparam [TX_TAG_WIDTH-1:0] RAW_TX_TAG = 0;
+wire [AXIS_SYNC_TX_USER_WIDTH-1:0] raw_tx_tuser;
 wire [AXIS_SYNC_DATA_WIDTH-1:0] raw_tx_tdata;
 wire [AXIS_SYNC_KEEP_WIDTH-1:0] raw_tx_tkeep;
 wire raw_tx_tvalid, raw_tx_tready, raw_tx_tlast;
 wire raw_tx_cpl = s_axis_sync_tx_cpl_valid[RAW_TX_PORT] &&
-    s_axis_sync_tx_cpl_tag[RAW_TX_PORT*TX_TAG_WIDTH +: TX_TAG_WIDTH] == RAW_TX_TAG;
+    !s_axis_sync_tx_cpl_tag[RAW_TX_PORT*TX_TAG_WIDTH+TX_TAG_WIDTH-1];
 
 raw_packet_qp #(
     .DMA_ADDR_WIDTH(DMA_ADDR_WIDTH),
@@ -651,7 +656,10 @@ raw_packet_qp #(
     .DMA_IMM_WIDTH(DMA_IMM_WIDTH),
     .AXIS_DATA_WIDTH(AXIS_SYNC_DATA_WIDTH),
     .AXIS_KEEP_WIDTH(AXIS_SYNC_KEEP_WIDTH),
-    .MAX_FRAME_SIZE(MAX_TX_SIZE)
+    .MAX_FRAME_SIZE(MAX_TX_SIZE),
+    .OP_TABLE_SIZE(RAW_TX_OP_TABLE_SIZE),
+    .TX_TAG_WIDTH(TX_TAG_WIDTH),
+    .WATCHDOG_CYCLES(RAW_TX_WATCHDOG_CYCLES)
 ) raw_qp_inst (
     .clk(clk),
     .rst(rst),
@@ -732,6 +740,8 @@ raw_packet_qp #(
     .m_axis_tx_tvalid(raw_tx_tvalid),
     .m_axis_tx_tready(raw_tx_tready),
     .m_axis_tx_tlast(raw_tx_tlast),
+    .m_axis_tx_tuser(raw_tx_tuser),
+    .tx_cpl_tag(s_axis_sync_tx_cpl_tag[RAW_TX_PORT*TX_TAG_WIDTH +: TX_TAG_WIDTH]),
     .tx_cpl_valid(raw_tx_cpl)
 );
 
@@ -816,7 +826,7 @@ axis_arb_mux #(
     .s_axis_tready({raw_tx_tready, s_axis_sync_tx_tready[RAW_TX_PORT]}),
     .s_axis_tlast({raw_tx_tlast, s_axis_sync_tx_tlast[RAW_TX_PORT]}),
     .s_axis_tid(2'b0), .s_axis_tdest(2'b0),
-    .s_axis_tuser({{AXIS_SYNC_TX_USER_WIDTH{1'b0}}, s_axis_sync_tx_tuser[RAW_TX_PORT*AXIS_SYNC_TX_USER_WIDTH +: AXIS_SYNC_TX_USER_WIDTH]}),
+    .s_axis_tuser({raw_tx_tuser, s_axis_sync_tx_tuser[RAW_TX_PORT*AXIS_SYNC_TX_USER_WIDTH +: AXIS_SYNC_TX_USER_WIDTH]}),
     .m_axis_tdata(m_axis_sync_tx_tdata[RAW_TX_PORT*AXIS_SYNC_DATA_WIDTH +: AXIS_SYNC_DATA_WIDTH]),
     .m_axis_tkeep(m_axis_sync_tx_tkeep[RAW_TX_PORT*AXIS_SYNC_KEEP_WIDTH +: AXIS_SYNC_KEEP_WIDTH]),
     .m_axis_tvalid(m_axis_sync_tx_tvalid[RAW_TX_PORT]),

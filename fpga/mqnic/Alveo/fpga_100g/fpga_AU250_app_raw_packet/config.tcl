@@ -122,6 +122,7 @@ dict set params AXI_DDR_MAX_BURST_LEN "256"
 # Application block configuration
 dict set params APP_ID "32'h12348010"
 dict set params APP_ENABLE "1"
+dict set params RAW_TX_OP_TABLE_SIZE "4"
 dict set params APP_CTRL_ENABLE "1"
 dict set params APP_DMA_ENABLE "1"
 dict set params APP_AXIS_DIRECT_ENABLE "0"

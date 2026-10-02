@@ -39,6 +39,12 @@ module raw_packet_csr #(
     input wire [31:0] sq_cons,
     input wire [31:0] cq_prod,
     input wire [31:0] fatal,
+    input wire [31:0] op_table_size,
+    input wire [31:0] active_count,
+    input wire [31:0] fetch_ptr,
+    input wire [31:0] phase,
+    input wire [31:0] unexpected_count,
+    input wire [31:0] stall_count,
     output wire reset_queues,
     output wire mr_commit,
     output wire enable,
@@ -78,6 +84,12 @@ localparam REG_CQ_PROD = 'h40;
 localparam REG_CQ_CONS = 'h44;
 localparam REG_MAX_FRAME = 'h48;
 localparam REG_QUEUE_RESET = 'h4c;
+localparam REG_OP_TABLE_SIZE = 'h50;
+localparam REG_ACTIVE_COUNT = 'h54;
+localparam REG_FETCH_PTR = 'h58;
+localparam REG_PHASE = 'h5c;
+localparam REG_UNEXPECTED_COUNT = 'h60;
+localparam REG_STALL_COUNT = 'h64;
 localparam REG_MR_INDEX = 'h80;
 localparam REG_MR_KEY = 'h84;
 localparam REG_MR_PD = 'h88;
@@ -264,6 +276,12 @@ always @* begin
         REG_CQ_PROD: rd_data = cq_prod;
         REG_CQ_CONS: rd_data = cq_cons_reg;
         REG_MAX_FRAME: rd_data = MAX_FRAME_SIZE;
+        REG_OP_TABLE_SIZE: rd_data = op_table_size;
+        REG_ACTIVE_COUNT: rd_data = active_count;
+        REG_FETCH_PTR: rd_data = fetch_ptr;
+        REG_PHASE: rd_data = phase;
+        REG_UNEXPECTED_COUNT: rd_data = unexpected_count;
+        REG_STALL_COUNT: rd_data = stall_count;
         REG_MR_INDEX: rd_data = {28'd0, mr_index_reg};
         REG_MR_KEY: rd_data = mr_key_reg;
         REG_MR_PD: rd_data = {8'd0, mr_pd_reg};

@@ -28,6 +28,10 @@ THE SOFTWARE.
 `timescale 1ns / 1ps
 `default_nettype none
 
+`ifdef APP_CUSTOM_PARAMS_ENABLE
+    `include "mqnic_app_custom_params.vh"
+`endif
+
 /*
  * Testbench top-level module
  */
@@ -140,6 +144,10 @@ module test_fpga_core #
     parameter APP_AXIS_SYNC_ENABLE = 1,
     parameter APP_AXIS_IF_ENABLE = 1,
     parameter APP_STAT_ENABLE = 1,
+
+    `ifdef APP_CUSTOM_PARAMS_ENABLE
+        `APP_CUSTOM_PARAMS_DECL
+    `endif
 
     // DMA interface configuration
     parameter DMA_IMM_ENABLE = 0,
@@ -742,6 +750,10 @@ fpga_core #(
     .APP_AXIS_SYNC_ENABLE(APP_AXIS_SYNC_ENABLE),
     .APP_AXIS_IF_ENABLE(APP_AXIS_IF_ENABLE),
     .APP_STAT_ENABLE(APP_STAT_ENABLE),
+
+    `ifdef APP_CUSTOM_PARAMS_ENABLE
+        `APP_CUSTOM_PARAMS_MAP
+    `endif
 
     // DMA interface configuration
     .DMA_IMM_ENABLE(DMA_IMM_ENABLE),

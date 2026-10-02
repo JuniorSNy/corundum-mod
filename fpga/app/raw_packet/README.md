@@ -11,9 +11,11 @@
 用户态 CQ ← ctrl DMA 写 CQE ← raw TX completion ← 按 tag 分流 MAC completion
 ```
 
-- 一个 raw TX QP，一个在途 WQE；16 个 MR 表项。目标是功能正确，没有线速吞吐承诺。
+- 一个 raw TX QP，可配置 1/2/4 个在途 WQE；16 个 MR 表项。没有线速吞吐承诺。
+  多在途实现正在进行完整 cocotb 验收，进度见[流水线验证记录](docs/pipeline-validation.md)。
 - 普通 NIC TX/RX 保留。raw 与普通 TX 用 Corundum `axis_arb_mux` 按 `tlast` 仲裁。
-- raw 使用 port 0、TX tag 0；普通 `tx_engine` 使用 tag 最高位为 1 的空间。
+- raw 使用 port 0、TX tag 最高位为 0 的空间，低位携带操作分配 generation；
+  普通 `tx_engine` 使用 tag 最高位为 1 的空间。
 - AXIS 使用 app 的同步时钟；其他端口透传。保留主工程 PCIe/DMA/MAC，不新增 CDC。
 - MR 映射连续的设备 DMA 地址区间，检查完整 lkey、PD、权限、边界及 64 位溢出。
   尚不支持任意用户页注册、页表或 scatter-gather MR。
@@ -24,9 +26,9 @@
 | 文件 | 职责 |
 |---|---|
 | `rtl/raw_mr_table.v` | 16 项 MR、权限校验、地址转换、保持至握手的响应 |
-| `rtl/raw_dma_read.v` | DMA descriptor → segmented RAM → AXIS；失败不输出残帧 |
+| `rtl/raw_dma_read.v` | 串行 SQ fetch 的 DMA descriptor → segmented RAM → AXIS |
 | `rtl/raw_packet_csr.v` | AXI-Lite CSR bank、主机 doorbell、MR 配置 staging |
-| `rtl/raw_packet_qp.v` | SQ 消费、MR 查询、payload DMA、TX 完成及 CQ；单在途调度 |
+| `rtl/raw_packet_qp.v` | 操作表、共享帧 RAM、SQ/MR 前端、并发 payload DMA、顺序 TX/CQ |
 | `rtl/mqnic_app_block_raw_packet.v` | Corundum app ABI、整帧仲裁、完成分流、未使用接口处理 |
 | `include/raw_packet.h` | 共享的 SQE/CQE/ioctl ABI |
 | `modules/mqnic_app_raw_packet/` | mqnic auxiliary driver，分配/映射 coherent DMA 内存 |
@@ -35,6 +37,8 @@
 
 AU250 构建入口：`fpga/mqnic/Alveo/fpga_100g/fpga_AU250_app_raw_packet`。
 目标器件 `xcu250-figd2104-2-e`，APP_ID `0x12348010`，使用 app DMA 与 sync AXIS，DDR 关闭。
+`RAW_TX_OP_TABLE_SIZE` 通过 Corundum custom app parameter hooks 透传；仿真默认 1，
+raw AU250 配置选择 4。`RAW_TX_WATCHDOG_CYCLES` 默认 0，仅在明确配置时启用诊断超时。
 应用控制 BAR 为 BAR2；app 的 AXI-Lite master 未使用。详见 [寄存器表](docs/registers.md)。
 
 ## SQ/CQ 与所有权
@@ -93,8 +97,15 @@ PYTHON_BIN=/home/sj/miniforge3/envs/corundum-test/bin/python bash tb/run_tests.s
 统一入口在同一 pytest 进程执行全部 case，按 `tb/<dut>/` 分目录，也可在 DUT 目录运行 `make test`。
 进程执行保留 cocotb-test 的 Icarus 配置，改用同步子进程等待和文件日志，
 修复当前环境可独立复现的 asyncio 子进程退出挂起；超时、空结果、跳过或失败均不能算通过。
-完整板级普通 NIC 回归较慢，单独采用 600 秒进程上限，其余 case 为 180 秒；
+Alveo 核普通 NIC 回归和每 seed 的 1024-WQE 压力 case 采用 600 秒进程上限，
+其余 case 为 180 秒；
 `RAW_SIM_TIMEOUT` 可调整进程上限，`RAW_SIM_BUILD_ROOT` 可隔离不同运行的构建目录。
+每次运行保存 `source_manifest.json`，记录实际 RTL/header SHA256、参数、seed 和截止。
+正式验收请使用新的构建目录；压力矩阵为深度 1/2/4 × AXIS 256/512 × seed 11/29/101。
+统一入口最后核对实际 XML 与性能指标，要求每 seed 至少 1024 WQE，以及受控延迟模型中
+64-byte 帧的深度 4/1 吞吐比至少 2。`RAW_STRESS_COUNT` 的缩短开发运行不能通过该门禁。
+归档单在途版本的性能复测可运行 `make -C tb/reference_benchmark`；该入口用 `git show`
+提取 `0784146c`，补测试所需的固定 TX tag 接口，在两种 AXIS 位宽各重复两次，不改工作树 RTL。
 `tb/core_tb.py` 与 integration source/parameter list 从 dma_bench 测试改编，保留原许可证。
 具体覆盖和限制见 [验证记录](docs/validation.md)，基线与分阶段计划见 [重构记录](docs/refactor-20261002.md)。
 
@@ -119,7 +130,7 @@ sudo utils/raw_packet_send /dev/mqnic-raw-0000:01:00.0 frame.bin
 程序通过 mmap 自己填写 SQE，ioctl 只承担初始化、发布指针、读取进度和停用。
 Coherent 映射不包含 BAR，不允许用户自行设置 DMA 物理地址。
 
-STOP 停止获取新 WQE 并等待当前 WQE 排空。VMA 保持文件和 DMA 缓冲存活，
+STOP 停止获取新 WQE 并等待已接受的在途 WQE 排空。VMA 保持文件和 DMA 缓冲存活，
 关闭 fd 后仍存在的映射也不能被提前释放。100 ms 排空超时会隔离 DMA 分配，
 禁止复用；需要设备复位/重启恢复。此版不实现硬件 DMA/MAC 超时自动恢复。
 app-only reset 不能取消父 DMA 已接受的事务，复位前必须由整个设备流程静默 DMA。
@@ -133,3 +144,13 @@ make
 
 该入口沿用 AU250 的板级文件/IP/约束，包含当前 Corundum checkout 的板级改动。
 本次没有执行 Vivado 综合、布局布线或上板测试；仿真通过不等于 timing closure。
+
+## 下一阶段设计
+
+[下一阶段研究与验收方案](docs/next-steps-20261002.md)基于 `0784146c` 的 RTL 和测试，
+说明停止恢复、单 QP 多在途、动态/分页 MR、多 QP 的实施依赖及验证缺口。
+其中单 QP 多在途正在实施验收；动态/分页 MR、多 QP 与系统级恢复仍是后续方案。
+
+[当前 cocotb 改进目标](docs/goal-cocotb-pipeline.md)：单 QP 支持 1/2/4 个在途 WQE，
+以模块、PCIe 核和 Alveo 核仿真验收；当前阶段不进行上板测试。实现及证据见
+[流水线验证记录](docs/pipeline-validation.md)。

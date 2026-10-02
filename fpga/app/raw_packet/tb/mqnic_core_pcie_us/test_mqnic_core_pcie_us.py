@@ -29,8 +29,8 @@ eth_rtl_dir = os.path.abspath(os.path.join(lib_dir, 'eth', 'rtl'))
 pcie_rtl_dir = os.path.abspath(os.path.join(lib_dir, 'pcie', 'rtl'))
 
 
-@pytest.mark.parametrize("if_count,ports_per_if", [(1, 1), (1, 2), (2, 1)])
-def test_mqnic_core_pcie_us(request, if_count, ports_per_if):
+@pytest.mark.parametrize("if_count,ports_per_if,op_table_size", [(1, 1, 1), (1, 2, 1), (2, 1, 1), (2, 1, 2), (2, 1, 4)])
+def test_mqnic_core_pcie_us(request, if_count, ports_per_if, op_table_size):
     axis_pcie_data_width = axis_eth_data_width = axis_eth_sync_data_width = 512
     ptp_ts_enable = ptp_ts_fmt_tod = 1
     dut = "mqnic_core_pcie_us"
@@ -279,6 +279,8 @@ def test_mqnic_core_pcie_us(request, if_count, ports_per_if):
     parameters['STAT_INC_WIDTH'] = 24
     parameters['STAT_ID_WIDTH'] = 12
 
+    parameters['RAW_TX_OP_TABLE_SIZE'] = op_table_size
+
     extra_env = {f'PARAM_{k}': str(v) for k, v in parameters.items()}
 
     sim_build = os.path.join(tests_dir, "sim_build",
@@ -286,6 +288,8 @@ def test_mqnic_core_pcie_us(request, if_count, ports_per_if):
 
     run_simulation(
         python_search=[tests_dir],
+        includes=[str(APP/'rtl')],
+        defines=['APP_CUSTOM_PARAMS_ENABLE'],
         verilog_sources=verilog_sources,
         toplevel=toplevel,
         module=module,

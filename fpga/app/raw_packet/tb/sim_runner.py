@@ -5,6 +5,9 @@ The local Python 3.10 asyncio subprocess transport can wait forever after child
 exit (also reproducible with /usr/bin/true, without cocotb). Keep logs in files
 and wait directly on the child; a timeout is always a failure, even with PASS XML.
 """
+import hashlib
+import json
+import logging
 import os
 from pathlib import Path
 import signal
@@ -12,6 +15,10 @@ import subprocess
 import xml.etree.ElementTree as ET
 
 from cocotb_test.simulator import Icarus
+
+# Cocotb 1.7 logs assertion tracebacks at INFO. Keep regression diagnostics
+# visible even when packet/DMA models run at WARNING to limit log volume.
+logging.getLogger('cocotb.regression').setLevel(logging.INFO)
 
 
 class FileLoggedIcarus(Icarus):
@@ -54,10 +61,21 @@ def run_simulation(**kwargs):
     if build_root:
         kwargs['sim_build'] = str(Path(build_root) / kwargs['module'] / Path(kwargs['sim_build']).name)
     kwargs.setdefault('force_compile', True)
-    kwargs.setdefault('extra_env', {}).setdefault('COCOTB_LOG_LEVEL', 'WARNING')
+    kwargs.setdefault('extra_env', {}).setdefault('COCOTB_LOG_LEVEL', os.environ.get('COCOTB_LOG_LEVEL', 'WARNING'))
     runner = FileLoggedIcarus(**kwargs)
     runner.process_timeout = timeout
     try:
+        sources = [Path(p) for p in kwargs.get('verilog_sources', [])]
+        sources += [p for directory in kwargs.get('includes', []) for p in Path(directory).glob('*.vh')]
+        manifest = {
+            'source_sha256': {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
+            'parameters': kwargs.get('parameters', {}), 'defines': kwargs.get('defines', []),
+            'toplevel': kwargs.get('toplevel'), 'module': kwargs.get('module'),
+            'expected_tests': expected_tests, 'process_timeout_seconds': timeout,
+            'scenario': {k: v for k, v in kwargs.get('extra_env', {}).items()
+                         if k in ('RAW_STRESS_SEED', 'RAW_STRESS_COUNT', 'RAW_STOP_STAGE', 'RAW_MISSING_STAGE')},
+        }
+        (Path(runner.sim_dir)/'source_manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
         results = runner.run()
         if not runner.compile_only:
             cases = list(ET.parse(results).iter('testcase'))

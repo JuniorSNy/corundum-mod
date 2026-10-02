@@ -6,6 +6,10 @@ FPGA_PART = xcu250-figd2104-2-e
 FPGA_TOP = fpga
 FPGA_ARCH = virtexuplus
 
+# Existing Corundum app parameter hooks
+DEFS += APP_CUSTOM_PARAMS_ENABLE
+INC_FILES += app/raw_packet/rtl/mqnic_app_custom_params.vh
+
 # Files for synthesis
 SYN_FILES = rtl/fpga_au200.v
 SYN_FILES += rtl/fpga_core.v
@@ -58,6 +62,7 @@ SYN_FILES += rtl/common/mqnic_tx_scheduler_block_rr.v
 SYN_FILES += rtl/common/tx_scheduler_rr.v
 SYN_FILES += rtl/common/cmac_pad.v
 SYN_FILES += rtl/common/mac_ts_insert.v
+SYN_FILES += app/raw_packet/rtl/mqnic_app_custom_params.vh
 SYN_FILES += app/raw_packet/rtl/mqnic_app_block_raw_packet.v
 SYN_FILES += app/raw_packet/rtl/raw_packet_qp.v
 SYN_FILES += app/raw_packet/rtl/raw_packet_csr.v

@@ -9,6 +9,10 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
+`ifdef APP_CUSTOM_PARAMS_ENABLE
+    `include "mqnic_app_custom_params.vh"
+`endif
+
 /*
  * FPGA core logic
  */
@@ -121,6 +125,10 @@ module fpga_core #
     parameter APP_AXIS_SYNC_ENABLE = 1,
     parameter APP_AXIS_IF_ENABLE = 1,
     parameter APP_STAT_ENABLE = 1,
+
+    `ifdef APP_CUSTOM_PARAMS_ENABLE
+        `APP_CUSTOM_PARAMS_DECL
+    `endif
 
     // DMA interface configuration
     parameter DMA_IMM_ENABLE = 0,
@@ -1150,6 +1158,10 @@ mqnic_core_pcie_us #(
     .APP_AXIS_SYNC_ENABLE(APP_AXIS_SYNC_ENABLE),
     .APP_AXIS_IF_ENABLE(APP_AXIS_IF_ENABLE),
     .APP_STAT_ENABLE(APP_STAT_ENABLE),
+
+    `ifdef APP_CUSTOM_PARAMS_ENABLE
+        `APP_CUSTOM_PARAMS_MAP
+    `endif
     .APP_GPIO_IN_WIDTH(32),
     .APP_GPIO_OUT_WIDTH(32),
 

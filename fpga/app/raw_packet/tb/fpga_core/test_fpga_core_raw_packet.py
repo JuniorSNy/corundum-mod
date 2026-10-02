@@ -8,6 +8,7 @@ import importlib.util
 from pathlib import Path
 from unittest.mock import patch
 
+import pytest
 import cocotb
 from cocotb.triggers import with_timeout
 from core_tb import CORUNDUM
@@ -36,10 +37,11 @@ async def ordinary_nic_regression(dut):
     await board.run_test_nic(dut)
 
 
-def test_fpga_core_raw_packet(request):
+@pytest.mark.parametrize("op_table_size", [1, 4])
+def test_fpga_core_raw_packet(request, op_table_size):
     def run_variant(**kwargs):
         parameters = kwargs['parameters']
-        parameters.update(APP_ID=0x12348010, APP_ENABLE=1, APP_CTRL_ENABLE=1,
+        parameters.update(RAW_TX_OP_TABLE_SIZE=op_table_size, APP_ID=0x12348010, APP_ENABLE=1, APP_CTRL_ENABLE=1,
                           APP_DMA_ENABLE=1, APP_AXIS_DIRECT_ENABLE=0,
                           APP_AXIS_SYNC_ENABLE=1, APP_AXIS_IF_ENABLE=0, APP_STAT_ENABLE=0)
         sources = kwargs['verilog_sources']
@@ -49,11 +51,13 @@ def test_fpga_core_raw_packet(request):
             path = str(CORUNDUM/'fpga/lib/eth/rtl'/name)
             if path not in sources:
                 sources.append(path)
+        kwargs.setdefault('includes', []).append(str(APP/'rtl'))
+        kwargs.setdefault('defines', []).append('APP_CUSTOM_PARAMS_ENABLE')
         kwargs.update(module='test_fpga_core_raw_packet', timeout_seconds=600, expected_tests=2,
                       python_search=[str(Path(__file__).resolve().parent)],
                       extra_env={**{f'PARAM_{k}': str(v) for k, v in parameters.items()},
                                  'COCOTB_LOG_LEVEL': 'WARNING'},
-                      sim_build=str(Path(__file__).resolve().parent/'sim_build/au250_2x1'))
+                      sim_build=str(Path(__file__).resolve().parent/'sim_build'/f'au250_2x1_{op_table_size}'))
         return run_simulation(**kwargs)
     # The reference owns the source list and board parameters; replace only its
     # final runner call while building this separate app-enabled variant.

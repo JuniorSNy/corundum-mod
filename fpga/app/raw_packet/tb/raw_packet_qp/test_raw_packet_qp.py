@@ -1,103 +1,14 @@
-"""Host-memory SQ/CQ test using Corundum's segmented RAM bus drivers."""
-import itertools
-import os
+# SPDX-License-Identifier: BSD-2-Clause
+"""Ordered raw TX/CQ verification using Corundum segmented RAM interfaces."""
 from pathlib import Path
 import struct
-import sys
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import RisingEdge, FallingEdge, Timer, with_timeout
-from cocotbext.axi import AxiLiteMaster, AxiLiteBus, AxiStreamSink, AxiStreamBus
-from cocotbext.axi.stream import define_stream
+from cocotb.triggers import Timer, with_timeout
 from sim_runner import run_simulation
 from raw_app import wait_cqe
+from raw_qp_tb import Host, init_pipeline, put_packet, wait_pending, CORUNDUM, StatusTransaction
 import pytest
-
-CORUNDUM = Path(os.environ.get('CORUNDUM_ROOT', Path(__file__).resolve().parents[5]))
-sys.path.insert(0, str(CORUNDUM / 'fpga/lib/pcie/tb'))
-from dma_psdp_ram import PsdpRamMasterWrite, PsdpRamWriteBus, PsdpRamMasterRead, PsdpRamReadBus
-DescBus, _, _, DescSink, _ = define_stream('Desc', signals=['dma_addr', 'ram_addr', 'ram_sel', 'len', 'tag', 'valid', 'ready'])
-StatusBus, StatusTransaction, StatusSource, _, _ = define_stream('Status', signals=['tag', 'error', 'valid'])
-
-
-def pauses():
-    return itertools.cycle([1, 1, 0, 0, 0, 1, 0])
-
-
-class Host:
-    """DMA descriptors cause actual segmented RAM transactions, not forced DUT internals."""
-    def __init__(self, dut):
-        self.dut = dut
-        self.base = 0x100000000
-        self.mem = bytearray(2**20)
-        self.requests = []
-        self.errors = {}
-        self.axil = AxiLiteMaster(AxiLiteBus.from_prefix(dut, 's_axil_app_ctrl'), dut.clk, dut.rst)
-        self.tx = AxiStreamSink(AxiStreamBus.from_prefix(dut, 'm_axis_tx'), dut.clk, dut.rst)
-        self.tx.set_pause_generator(pauses())
-        self.ctrl_ram = PsdpRamMasterWrite(PsdpRamWriteBus.from_prefix(dut, 'ctrl_dma_ram'), dut.clk, dut.rst)
-        self.data_ram = PsdpRamMasterWrite(PsdpRamWriteBus.from_prefix(dut, 'data_dma_ram'), dut.clk, dut.rst)
-        self.cq_ram = PsdpRamMasterRead(PsdpRamReadBus.from_prefix(dut, 'ctrl_dma_ram'), dut.clk, dut.rst)
-        for prefix, ram in [('ctrl', self.ctrl_ram), ('data', self.data_ram)]:
-            desc = DescSink(DescBus.from_prefix(dut, f'm_axis_{prefix}_dma_read_desc'), dut.clk, dut.rst)
-            desc.set_pause_generator(pauses())
-            status = StatusSource(StatusBus.from_prefix(dut, f's_axis_{prefix}_dma_read_desc_status'), dut.clk, dut.rst)
-            cocotb.start_soon(self.read_dma(prefix, desc, status, ram))
-        desc = DescSink(DescBus.from_prefix(dut, 'm_axis_ctrl_dma_write_desc'), dut.clk, dut.rst)
-        desc.set_pause_generator(pauses())
-        status = StatusSource(StatusBus.from_prefix(dut, 's_axis_ctrl_dma_write_desc_status'), dut.clk, dut.rst)
-        cocotb.start_soon(self.write_dma(desc, status))
-
-    async def read_dma(self, prefix, source, status, ram):
-        while True:
-            desc = await source.recv()
-            address, length = int(desc.dma_addr), int(desc.len)
-            self.requests.append((prefix, address, length))
-            error = self.errors.pop((prefix, address), 0)
-            if not error:
-                off = address-self.base
-                assert 0 <= off <= len(self.mem)-length
-                await ram.write(int(desc.ram_addr), bytes(self.mem[off:off+length]))
-            await Timer(20, units='ns')
-            await status.send(StatusTransaction(tag=desc.tag, error=error))
-
-    async def write_dma(self, source, status):
-        while True:
-            desc = await source.recv()
-            address, length = int(desc.dma_addr), int(desc.len)
-            error = self.errors.pop(('write', address), 0)
-            data = bytes(await self.cq_ram.read(int(desc.ram_addr), length))
-            if not error:
-                off = address-self.base
-                assert 0 <= off <= len(self.mem)-length
-                self.mem[off:off+length-4] = data[:-4]
-            await Timer(32, units='ns')
-            await status.send(StatusTransaction(tag=desc.tag, error=error))
-            # Model delayed posted writes: DMA status precedes publication in
-            # host memory; only the last DWORD authorizes reading this CQE.
-            if not error:
-                await Timer(100, units='ns')
-                self.mem[off+length-4:off+length] = data[-4:]
-
-    async def write(self, address, value):
-        await self.axil.write_dword(address, value)
-
-    async def read(self, address):
-        return await self.axil.read_dword(address)
-
-    async def wait_reg(self, address, expected):
-        for _ in range(1000):
-            if await self.read(address) == expected:
-                return
-            await Timer(20, units='ns')
-        raise AssertionError(f'register {address:#x} did not reach {expected}')
-
-    async def complete_tx(self):
-        await FallingEdge(self.dut.clk)
-        self.dut.tx_cpl_valid.value = 1
-        await RisingEdge(self.dut.clk)
-        await FallingEdge(self.dut.clk)
-        self.dut.tx_cpl_valid.value = 0
 
 
 @cocotb.test(timeout_time=200, timeout_unit='us')
@@ -105,6 +16,7 @@ async def raw_sq_to_ethernet(dut):
     cocotb.start_soon(Clock(dut.clk, 4, units='ns').start())
     dut.rst.value = 1
     dut.tx_cpl_valid.value = 0
+    dut.tx_cpl_tag.value = 0
     dut.ctrl_dma_ram_wr_cmd_sel.value = 0
     dut.ctrl_dma_ram_rd_cmd_sel.value = 0
     dut.data_dma_ram_wr_cmd_sel.value = 0
@@ -146,7 +58,7 @@ async def raw_sq_to_ethernet(dut):
                 await Timer(100, units='ns')
                 assert await tb.read(0x40) == seq
                 assert await tb.read(0x3c) == seq
-            await tb.complete_tx()
+            await tb.complete_tx(int(frame.tuser) >> 1)
         await tb.wait_reg(0x40, seq+1)
         cqoff = 0x4000+(seq % 4)*32
         cqe = await wait_cqe(tb.mem, cqoff, seq+1)
@@ -225,8 +137,106 @@ async def raw_sq_to_ethernet(dut):
     await submit()
 
 
+
+@cocotb.test(timeout_time=200, timeout_unit='us')
+async def pipeline_reorder_stop(dut):
+    """Hold all DMA status, reorder returns, stop, and delay first MAC/CQ completion."""
+    tb = await init_pipeline(dut)
+    depth = int(dut.OP_TABLE_SIZE.value)
+    tb.hold_data_status = True
+    packets = [bytes((j+37*i) & 255 for j in range([65, 1514, 4097, 9214, 127][i]))
+               for i in range(depth+1)]
+    for i, packet in enumerate(packets):
+        put_packet(tb, i, packet)
+    await tb.write(0x38, depth+1)
+    await wait_pending(tb, depth)
+    assert len(tb.data_descriptors) == depth
+    assert len({d[2] for d in tb.data_descriptors}) == depth, 'overlapping payload buffers'
+    assert len({d[3] for d in tb.data_descriptors}) == depth, 'duplicate active DMA tags'
+    # A wrong tag must not complete any slot or release unvalidated data.
+    status = tb.data_statuses[0][0]
+    await status.send(StatusTransaction(tag=0xffff, error=0))
+    await Timer(100, units='ns')
+    assert tb.tx.empty()
+    await tb.write(0x10, 0)
+    assert await tb.read(0x14) & 1
+    # Every later status arrives before the first. Nothing may pass the TX head.
+    for source, tag, error in reversed(tb.data_statuses[1:]):
+        await source.send(StatusTransaction(tag=tag, error=error))
+    await Timer(100, units='ns')
+    assert tb.tx.empty()
+    source, tag, error = tb.data_statuses[0]
+    await source.send(StatusTransaction(tag=tag, error=error))
+    frames = [await with_timeout(tb.tx.recv(), 20, 'us') for _ in range(depth)]
+    assert [bytes(f) for f in frames] == packets[:depth]
+    tags = [int(f.tuser) >> 1 for f in frames]
+    assert len(set(tags)) == depth
+    assert await tb.read(0x40) == 0, 'CQ success before matching MAC completion'
+    assert len(tb.data_descriptors) == depth, 'STOP accepted another WQE'
+    # Later completions and duplicate DMA status cannot retire the head.
+    await source.send(StatusTransaction(tag=tag, error=2))
+    await tb.complete_tx(0xffff)
+    for tx_tag in reversed(tags[1:]):
+        await tb.complete_tx(tx_tag)
+    await Timer(100, units='ns')
+    assert await tb.read(0x40) == 0
+    tb.cq_gate.clear()
+    await tb.complete_tx(tags[0])
+    await Timer(200, units='ns')
+    assert await tb.read(0x40) == 0, 'CQ counter advanced with RAM read held'
+    assert await tb.read(0x14) & 1
+    tb.cq_gate.set()
+    await tb.wait_reg(0x40, depth)
+    for i, packet in enumerate(packets[:depth]):
+        assert await wait_cqe(tb.mem, 0x4000+i*32, i+1) == (
+            0xfeed0000+i, 0, len(packet), i, 0, 0, i+1)
+    await tb.wait_reg(0x14, 0)
+    assert await tb.read(0x3c) == depth
+    # Pending producer entry survives STOP; enable resumes it without queue reset.
+    tb.hold_data_status = False
+    await tb.write(0x44, depth)
+    await tb.write(0x10, 1)
+    frame = await with_timeout(tb.tx.recv(), 20, 'us')
+    assert bytes(frame) == packets[depth]
+    await tb.complete_tx(int(frame.tuser) >> 1)
+    await tb.wait_reg(0x40, depth+1)
+    assert await wait_cqe(tb.mem, 0x4000+depth*32, depth+1) == (
+        0xfeed0000+depth, 0, len(packets[depth]), depth, 0, 0, depth+1)
+
+
+@cocotb.test(timeout_time=200, timeout_unit='us')
+async def pipeline_cq_credit(dut):
+    """A two-entry CQ limits all depths, including valid long-frame operations."""
+    tb = await init_pipeline(dut, ring_log=1)
+    packets = [bytes((j+13*i) & 255 for j in range(4097)) for i in range(3)]
+    for i in range(2):
+        put_packet(tb, i, packets[i], ring_size=2)
+    await tb.write(0x38, 2)
+    for i in range(2):
+        frame = await with_timeout(tb.tx.recv(), 20, 'us')
+        assert bytes(frame) == packets[i]
+        await tb.complete_tx(int(frame.tuser) >> 1)
+    await tb.wait_reg(0x40, 2)
+    for i in range(2):
+        assert await wait_cqe(tb.mem, 0x4000+i*32, i+1) == (
+            0xfeed0000+i, 0, len(packets[i]), i, 0, 0, i+1)
+    put_packet(tb, 2, packets[2], ring_size=2)
+    await tb.write(0x38, 3)
+    before = len(tb.requests)
+    await Timer(1000, units='ns')
+    assert len(tb.requests) == before, 'fetch without CQ credit'
+    assert tb.tx.empty()
+    await tb.write(0x44, 1)
+    frame = await with_timeout(tb.tx.recv(), 20, 'us')
+    assert bytes(frame) == packets[2]
+    await tb.complete_tx(int(frame.tuser) >> 1)
+    await tb.wait_reg(0x40, 3)
+    assert await wait_cqe(tb.mem, 0x4000, 3) == (0xfeed0002, 0, len(packets[2]), 2, 0, 0, 3)
+
+
 @pytest.mark.parametrize('axis_width', [256, 512])
-def test_qp(axis_width):
+@pytest.mark.parametrize('op_table_size', [1, 2, 4])
+def test_qp(axis_width, op_table_size):
     app = Path(__file__).resolve().parents[2]
     sources = list((app/'rtl').glob('raw_*.v'))
     sources += [CORUNDUM/'fpga/lib/pcie/rtl'/name for name in ['dma_psdpram.v', 'dma_client_axis_source.v']]
@@ -234,6 +244,7 @@ def test_qp(axis_width):
     run_simulation(
         simulator='icarus', verilog_sources=[str(p) for p in sources],
         toplevel='raw_packet_qp', module='test_raw_packet_qp', python_search=[str(Path(__file__).resolve().parent)],
-        parameters={'AXIS_DATA_WIDTH': axis_width, 'AXIS_KEEP_WIDTH': axis_width//8},
-        sim_build=str(app/f'tb/sim_build/qp_{axis_width}'),
+        parameters={'AXIS_DATA_WIDTH': axis_width, 'AXIS_KEEP_WIDTH': axis_width//8, 'OP_TABLE_SIZE': op_table_size},
+        sim_build=str(app/f'tb/sim_build/qp_{axis_width}_{op_table_size}'),
+        expected_tests=3,
     )
