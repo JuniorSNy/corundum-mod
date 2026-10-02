@@ -806,8 +806,8 @@ assign m_axis_direct_rx_tuser = s_axis_direct_rx_tuser;
 /*
  * Ethernet (synchronous MAC interface - low latency raw traffic)
  */
-// Corundum's normal TX engine sets the tag MSB.  Tag zero belongs to
-// this single-outstanding raw QP and its completion must not reach that engine.
+// Corundum's normal TX engine sets the tag MSB. Raw operation generations
+// use MSB zero, and their completions must not reach the normal TX engine.
 assign m_axis_sync_tx_cpl_ts = s_axis_sync_tx_cpl_ts;
 assign m_axis_sync_tx_cpl_tag = s_axis_sync_tx_cpl_tag;
 assign m_axis_sync_tx_cpl_valid[RAW_TX_PORT] = s_axis_sync_tx_cpl_valid[RAW_TX_PORT] && !raw_tx_cpl;

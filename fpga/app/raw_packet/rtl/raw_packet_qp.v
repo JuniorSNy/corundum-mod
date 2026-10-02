@@ -228,7 +228,8 @@ wire tx_launch = tx_state_reg == TX_IDLE && tx_ptr_reg != fetch_ptr_reg &&
 wire pending_dma = |(dma_issued_reg & ~dma_done_reg);
 wire pending_tx = |(tx_started_reg & ~tx_done_reg);
 wire idle = front_state_reg == ST_IDLE && tx_state_reg == TX_IDLE && cq_state_reg == CQ_IDLE &&
-    !pending_dma && !pending_tx && (fatal_reg != 0 || active_count == 0);
+    tx_ptr_reg == fetch_ptr_reg && !pending_dma && !pending_tx &&
+    (fatal_reg != 0 || active_count == 0);
 raw_packet_csr #(
     .AXIL_APP_CTRL_ADDR_WIDTH(AXIL_APP_CTRL_ADDR_WIDTH),
     .AXIL_APP_CTRL_DATA_WIDTH(AXIL_APP_CTRL_DATA_WIDTH),

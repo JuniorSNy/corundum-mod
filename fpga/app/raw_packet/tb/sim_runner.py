@@ -67,13 +67,17 @@ def run_simulation(**kwargs):
     try:
         sources = [Path(p) for p in kwargs.get('verilog_sources', [])]
         sources += [p for directory in kwargs.get('includes', []) for p in Path(directory).glob('*.vh')]
+        python_sources = {p for directory in kwargs.get('python_search', [])
+                          for p in Path(directory).glob('*.py')}
         manifest = {
             'source_sha256': {str(p): hashlib.sha256(p.read_bytes()).hexdigest() for p in sources},
+            'python_source_sha256': {str(p): hashlib.sha256(p.read_bytes()).hexdigest()
+                                     for p in sorted(python_sources)},
             'parameters': kwargs.get('parameters', {}), 'defines': kwargs.get('defines', []),
             'toplevel': kwargs.get('toplevel'), 'module': kwargs.get('module'),
             'expected_tests': expected_tests, 'process_timeout_seconds': timeout,
             'scenario': {k: v for k, v in kwargs.get('extra_env', {}).items()
-                         if k in ('RAW_STRESS_SEED', 'RAW_STRESS_COUNT', 'RAW_STOP_STAGE', 'RAW_MISSING_STAGE')},
+                         if k in ('RAW_STRESS_SEED', 'RAW_STRESS_COUNT', 'RAW_STOP_STAGE', 'RAW_MISSING_STAGE', 'RAW_DRAIN_SCENARIO')},
         }
         (Path(runner.sim_dir)/'source_manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
         results = runner.run()

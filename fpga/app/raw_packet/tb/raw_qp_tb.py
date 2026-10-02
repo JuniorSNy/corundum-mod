@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: BSD-2-Clause
 """Raw QP host, DMA and RAM models shared by independent cocotb scenarios."""
 import itertools
+import json
+from collections import deque
 import os
 import struct
 import sys
@@ -8,6 +10,8 @@ from pathlib import Path
 import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, Timer, Event, Lock, with_timeout
+from cocotb.result import SimTimeoutError
+from cocotb.utils import get_sim_time
 from cocotbext.axi import AxiLiteMaster, AxiLiteBus, AxiStreamSink, AxiStreamBus
 from cocotbext.axi.stream import define_stream
 
@@ -26,6 +30,20 @@ class Host:
     """DMA descriptors cause actual segmented RAM transactions, not forced DUT internals."""
     def __init__(self, dut):
         self.dut = dut
+        # Model events are diagnostic evidence, not additional wire assertions.
+        # Keep a bounded history and inspect registers only on a slow timer or
+        # failure, avoiding additional signal reads on every simulation clock.
+        self.recent_events = deque(maxlen=24)
+        self.last_progress_ns = get_sim_time(units='ns')
+        names = ('front_state_reg', 'tx_state_reg', 'cq_state_reg',
+                 'state_reg', 'fetch_ptr_reg', 'tx_ptr_reg', 'sq_cons_reg',
+                 'cq_prod_reg', 'active_reg', 'fatal_reg', 'tag_counter_reg')
+        self.diagnostic_regs = {
+            name: getattr(dut, name) for name in names if hasattr(dut, name)
+        }
+        self.last_fatal = 0
+        self.stall_reported_at = None
+        cocotb.start_soon(self.monitor_progress())
         self.base = 0x100000000
         self.mem = bytearray(2**20)
         self.requests = []
@@ -54,6 +72,59 @@ class Host:
         desc.set_pause_generator(pauses())
         status = StatusSource(StatusBus.from_prefix(dut, 's_axis_ctrl_dma_write_desc_status'), dut.clk, dut.rst)
         cocotb.start_soon(self.write_dma(desc, status))
+
+    def record_event(self, kind, **fields):
+        now = get_sim_time(units='ns')
+        self.last_progress_ns = now
+        self.recent_events.append({'time_ns': now, 'model_event': kind, **fields})
+
+    @staticmethod
+    def diagnostic_value(handle):
+        # Inactive status tag/error pins may intentionally contain X. Preserve
+        # them in diagnostic output instead of failing a background log task.
+        value = handle.value
+        try:
+            return int(value)
+        except ValueError:
+            return str(value)
+
+    def dump_diagnostics(self, reason):
+        snapshot = {name: self.diagnostic_value(handle) for name, handle in self.diagnostic_regs.items()}
+        if all(isinstance(snapshot.get(name), int)
+               for name in ('front_state_reg', 'tx_state_reg', 'cq_state_reg')):
+            snapshot['phase'] = (snapshot['front_state_reg'] |
+                                 snapshot['tx_state_reg'] << 5 |
+                                 snapshot['cq_state_reg'] << 6)
+        # Include current status pins for statuses injected outside Host methods.
+        # They are a failure-time snapshot, not a history of wire handshakes.
+        pins = {}
+        for prefix in ('s_axis_ctrl_dma_read_desc_status',
+                       's_axis_data_dma_read_desc_status',
+                       's_axis_ctrl_dma_write_desc_status', 'tx_cpl'):
+            pins[prefix] = {field: self.diagnostic_value(getattr(self.dut, prefix+'_'+field))
+                            for field in ('valid', 'tag', 'error')
+                            if hasattr(self.dut, prefix+'_'+field)}
+        self.dut._log.warning('RAW_QP_DIAGNOSTIC reason=%s time_ns=%s phase/registers=%s status_pins=%s',
+                              reason, get_sim_time(units='ns'), json.dumps(snapshot, sort_keys=True),
+                              json.dumps(pins, sort_keys=True))
+        for event in self.recent_events:
+            self.dut._log.warning('RAW_QP_RECENT_MODEL_EVENT %s', json.dumps(event, sort_keys=True))
+
+    async def monitor_progress(self):
+        while True:
+            await Timer(1000, units='ns')
+            fatal_handle = self.diagnostic_regs.get('fatal_reg')
+            fatal = int(fatal_handle.value) if fatal_handle is not None else 0
+            if fatal and fatal != self.last_fatal:
+                self.dump_diagnostics(f'hardware fatal {fatal:#x}')
+            self.last_fatal = fatal
+            now = get_sim_time(units='ns')
+            if now-self.last_progress_ns < 5000 or self.stall_reported_at == self.last_progress_ns:
+                continue
+            active_handle = self.diagnostic_regs.get('active_reg')
+            if active_handle is not None and int(active_handle.value):
+                self.dump_diagnostics('no model progress for at least 5000 ns while contexts active')
+                self.stall_reported_at = self.last_progress_ns
 
     async def monitor_interfaces(self):
         channels = [
@@ -89,6 +160,8 @@ class Host:
             desc = await source.recv()
             address, length = int(desc.dma_addr), int(desc.len)
             self.requests.append((prefix, address, length))
+            self.record_event(('sq' if prefix == 'ctrl' else 'payload')+'_read_descriptor_recv', dma_addr=address,
+                              length=length, ram_addr=int(desc.ram_addr), tag=int(desc.tag))
             error = self.errors.pop((prefix, address), 0)
             if prefix == 'data':
                 self.data_descriptors.append((address, length, int(desc.ram_addr), int(desc.tag)))
@@ -101,18 +174,23 @@ class Host:
             else:
                 await Timer(20, units='ns')
                 await status.send(StatusTransaction(tag=desc.tag, error=error))
+                self.record_event('sq_status_enqueued', tag=int(desc.tag), error=error)
 
     async def return_data_status(self, status, desc, error):
         await Timer(self.data_delays.get(int(desc.dma_addr), 20), units='ns')
         if self.hold_data_status:
             self.data_statuses.append((status, int(desc.tag), error))
+            self.record_event('payload_status_held', tag=int(desc.tag), error=error)
         else:
             await status.send(StatusTransaction(tag=desc.tag, error=error))
+            self.record_event('payload_status_enqueued', tag=int(desc.tag), error=error)
 
     async def write_dma(self, source, status):
         while True:
             desc = await source.recv()
             address, length = int(desc.dma_addr), int(desc.len)
+            self.record_event('cq_write_descriptor_recv', dma_addr=address,
+                              length=length, ram_addr=int(desc.ram_addr), tag=int(desc.tag))
             error = self.errors.pop(('write', address), 0)
             await self.cq_gate.wait()
             data = bytes(await self.cq_ram.read(int(desc.ram_addr), length))
@@ -122,11 +200,14 @@ class Host:
                 self.mem[off:off+length-4] = data[:-4]
             await Timer(self.cq_delay_ns, units='ns')
             await status.send(StatusTransaction(tag=desc.tag, error=error))
+            self.record_event('cq_status_enqueued', tag=int(desc.tag), error=error)
             # Model delayed posted writes: DMA status precedes publication in
             # host memory; only the last DWORD authorizes reading this CQE.
             if not error:
                 await Timer(100, units='ns')
                 self.mem[off+length-4:off+length] = data[-4:]
+                self.record_event('cq_commit_published', tag=int(desc.tag), dma_addr=address,
+                                  commit_sequence=int.from_bytes(data[-4:], 'little'))
 
     async def write(self, address, value):
         await self.axil.write_dword(address, value)
@@ -135,11 +216,14 @@ class Host:
         return await self.axil.read_dword(address)
 
     async def wait_reg(self, address, expected):
+        actual = None
         for _ in range(1000):
-            if await self.read(address) == expected:
+            actual = await self.read(address)
+            if actual == expected:
                 return
             await Timer(20, units='ns')
-        raise AssertionError(f'register {address:#x} did not reach {expected}')
+        self.dump_diagnostics(f'wait_reg {address:#x} expected={expected:#x} actual={actual:#x}')
+        raise AssertionError(f'register {address:#x} did not reach {expected}; last value {actual:#x}')
 
     async def complete_tx(self, tag=0):
         await self.tx_completion_lock.acquire()
@@ -148,6 +232,7 @@ class Host:
             self.dut.tx_cpl_tag.value = tag
             self.dut.tx_cpl_valid.value = 1
             await RisingEdge(self.dut.clk)
+            self.record_event('mac_completion_pulse', tag=tag)
             await FallingEdge(self.dut.clk)
             self.dut.tx_cpl_valid.value = 0
         finally:
@@ -188,6 +273,10 @@ async def wait_pending(tb, count):
     async def wait():
         while len(tb.data_statuses) != count:
             await Timer(20, units='ns')
-    await with_timeout(wait(), 20, 'us')
+    try:
+        await with_timeout(wait(), 20, 'us')
+    except SimTimeoutError:
+        tb.dump_diagnostics(f'wait_pending expected={count} actual={len(tb.data_statuses)}')
+        raise
 
 
