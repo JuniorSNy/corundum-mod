@@ -12,7 +12,7 @@
 ```
 
 - 一个 raw TX QP，可配置 1/2/4 个在途 WQE；16 个 MR 表项。没有线速吞吐承诺。
-  多在途实现正在进行完整 cocotb 验收，进度见[流水线验证记录](docs/pipeline-validation.md)。
+  多在途实现已通过 64 项 pytest、74 个功能 cocotb 场景，证据见[流水线验证记录](docs/pipeline-validation.md)。
 - 普通 NIC TX/RX 保留。raw 与普通 TX 用 Corundum `axis_arb_mux` 按 `tlast` 仲裁。
 - raw 使用 port 0、TX tag 最高位为 0 的空间，低位携带操作分配 generation；
   普通 `tx_engine` 使用 tag 最高位为 1 的空间。
@@ -97,10 +97,11 @@ PYTHON_BIN=/home/sj/miniforge3/envs/corundum-test/bin/python bash tb/run_tests.s
 统一入口在同一 pytest 进程执行全部 case，按 `tb/<dut>/` 分目录，也可在 DUT 目录运行 `make test`。
 进程执行保留 cocotb-test 的 Icarus 配置，改用同步子进程等待和文件日志，
 修复当前环境可独立复现的 asyncio 子进程退出挂起；超时、空结果、跳过或失败均不能算通过。
-Alveo 核普通 NIC 回归和每 seed 的 1024-WQE 压力 case 采用 600 秒进程上限，
+Alveo 核普通 NIC 回归、PCIe 核持续共存和每 seed 的 1024-WQE 压力 case 采用 600 秒进程上限，
 其余 case 为 180 秒；
 `RAW_SIM_TIMEOUT` 可调整进程上限，`RAW_SIM_BUILD_ROOT` 可隔离不同运行的构建目录。
-每次运行保存 `source_manifest.json`，记录实际 RTL/header SHA256、参数、seed 和截止。
+每次运行保存 `source_manifest.json`，记录显式 RTL/header 与测试/helper Python SHA256、参数、seed 和截止。
+完整矩阵与源码报告使用 `tb/validate_pipeline_results.py`；当前完成记录见[流水线验证](docs/pipeline-validation.md)。
 正式验收请使用新的构建目录；压力矩阵为深度 1/2/4 × AXIS 256/512 × seed 11/29/101。
 统一入口最后核对实际 XML 与性能指标，要求每 seed 至少 1024 WQE，以及受控延迟模型中
 64-byte 帧的深度 4/1 吞吐比至少 2。`RAW_STRESS_COUNT` 的缩短开发运行不能通过该门禁。
@@ -149,7 +150,7 @@ make
 
 [下一阶段研究与验收方案](docs/next-steps-20261002.md)基于 `0784146c` 的 RTL 和测试，
 说明停止恢复、单 QP 多在途、动态/分页 MR、多 QP 的实施依赖及验证缺口。
-其中单 QP 多在途正在实施验收；动态/分页 MR、多 QP 与系统级恢复仍是后续方案。
+其中单 QP 多在途已完成本阶段 cocotb 验收；动态/分页 MR、多 QP 与系统级恢复仍是后续方案。
 
 [当前 cocotb 改进目标](docs/goal-cocotb-pipeline.md)：单 QP 支持 1/2/4 个在途 WQE，
 以模块、PCIe 核和 Alveo 核仿真验收；当前阶段不进行上板测试。实现及证据见

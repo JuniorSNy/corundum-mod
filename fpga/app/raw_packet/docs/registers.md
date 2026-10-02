@@ -25,7 +25,7 @@ MR 和基础配置只能在 `enable=0 && busy=0` 时改变。
 | 50 | op table size | 只读，配置的最大在途 WQE 数（1/2/4） |
 | 54 | active count | 只读，已取 SQE、尚未成功退休的操作数，含隔离上下文 |
 | 58 | fetch pointer | 只读，内部 SQ fetch 指针，32 位回绕 |
-| 5c | phase | bits 3:0 SQ/MR 前端，bit 4 TX stream，bits 7:6 CQ writer |
+| 5c | phase | bits 3:0 SQ/MR 前端，bit 5 TX stream，bits 7:6 CQ writer（bit 4 保留） |
 | 60 | unexpected count | 只读，忽略的 SQ/payload/CQ DMA status 和 MAC completion 数，32 位回绕 |
 | 64 | stall count | 只读，无进展周期计数；watchdog 故障时保持，queue reset 清零 |
 | 80 | MR shadow index | 0..15 |
@@ -46,8 +46,10 @@ MR local write 权限为后续扩展保留，当前 raw TX 只请求 local read�
 
 `RAW_TX_WATCHDOG_CYCLES=0` 默认关闭自动超时；非零时连续无阶段进展达到配置周期
 锁存 fatal=0x60。它停止接收新 WQE，保留 DMA/缓冲所有权，不取消父 PCIe DMA。
-迟到 status 可以使已接受的工作排空，但不能让隔离上下文发布成功或自动复用。
+迟到 status 可以使已接受的工作排空，但不推进硬件退休计数或释放隔离上下文。
+父 DMA 已接受的 CQ 写入仍可能晚到主机；软件需要结合 fatal 和资源归属处理它。
 故障时 busy 仍反映未结束的前端、DMA、AXIS、MAC 和 CQ DMA 事务；
+已接受但尚未启动 TX 的上下文同样保持 busy，不能借最后一条迟到 DMA status 提前复位。
 排空后 busy 可以为 0，而 active count 仍保留失败/未发布上下文，等待显式 queue reset。
 busy=0 不证明主机 posted writes 已排空，系统级资源回收仍需父设备协调。
 tag generation 跨 queue reset 保留，完整 rst 前必须静默父 DMA；有限 tag 回绕

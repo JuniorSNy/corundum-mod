@@ -1,0 +1,3426 @@
+{
+  "implementation_revision": "c1f6bb6164d59bb9e3325d6eabad6a4e097c929e",
+  "build_root": "/tmp/raw-pipeline-final-acceptance-two",
+  "pytest_log_sha256": "a988eec561ccfbf4cbc33a7d11a8093ce4e0357e8d2751271ac866f6f68bc5f8",
+  "functional_runs": [
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_fpga_core_raw_packet/au250_2x1_1/jpf67n0j_results.xml",
+      "xml_sha256": "e3bf684d19b770822adebfbbec0594f2893310c888e46c0f6da929c4e547760b",
+      "cases": [
+        {
+          "name": "raw_and_normal_board",
+          "classname": "test_fpga_core_raw_packet",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "28",
+          "time": "110.71308135986328",
+          "sim_time_ns": "81871.523438",
+          "ratio_time": "739.49277205901"
+        },
+        {
+          "name": "ordinary_nic_regression",
+          "classname": "test_fpga_core_raw_packet",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "35",
+          "time": "312.6977291107178",
+          "sim_time_ns": "315176.000001",
+          "ratio_time": "1007.9254521525635"
+        }
+      ],
+      "parameters": {
+        "QSFP_CNT": 2,
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "PORT_MASK": 0,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 1024,
+        "PTP_CLK_PERIOD_NS_DENOM": 165,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "TX_FIFO_DEPTH": 131072,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 0,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_TX_PIPELINE": 4,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 4,
+        "AXIS_ETH_TX_TS_PIPELINE": 4,
+        "AXIS_ETH_RX_PIPELINE": 4,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 4,
+        "ETH_RX_CLK_FROM_TX": 0,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_fpga_core_raw_packet/au250_2x1_4/93s4knuu_results.xml",
+      "xml_sha256": "ba8a307725a742b143e20fe68d4980861f0c1757fa6caac406b4e8a0d90b77ca",
+      "cases": [
+        {
+          "name": "raw_and_normal_board",
+          "classname": "test_fpga_core_raw_packet",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "28",
+          "time": "62.90694975852966",
+          "sim_time_ns": "81871.523438",
+          "ratio_time": "1301.47024696423"
+        },
+        {
+          "name": "ordinary_nic_regression",
+          "classname": "test_fpga_core_raw_packet",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "35",
+          "time": "319.6401541233063",
+          "sim_time_ns": "315176.000001",
+          "ratio_time": "986.0338131341779"
+        }
+      ],
+      "parameters": {
+        "QSFP_CNT": 2,
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "PORT_MASK": 0,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 1024,
+        "PTP_CLK_PERIOD_NS_DENOM": 165,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "TX_FIFO_DEPTH": 131072,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 0,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_TX_PIPELINE": 4,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 4,
+        "AXIS_ETH_TX_TS_PIPELINE": 4,
+        "AXIS_ETH_RX_PIPELINE": 4,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 4,
+        "ETH_RX_CLK_FROM_TX": 0,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_mqnic_core_pcie_us/test_mqnic_core_pcie_us-1-1-1/zpdozkk4_results.xml",
+      "xml_sha256": "d64353f36d7d70a0861700c53f1c317195e0713e0965a7eee18ecacc1f54dfe7",
+      "cases": [
+        {
+          "name": "raw_and_normal_nic",
+          "classname": "test_mqnic_core_pcie_us",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "33.55560541152954",
+          "sim_time_ns": "46715.523438",
+          "ratio_time": "1392.182404849378"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 1,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_mqnic_core_pcie_us/test_mqnic_core_pcie_us-1-2-1/22yw6lsq_results.xml",
+      "xml_sha256": "065a65c34830f51cf8dd69e29590382a9a7e4e5954c35fee2c3955e0dfb95c45",
+      "cases": [
+        {
+          "name": "raw_and_normal_nic",
+          "classname": "test_mqnic_core_pcie_us",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "50.1097047328949",
+          "sim_time_ns": "69691.523438",
+          "ratio_time": "1390.778968055872"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 1,
+        "PORTS_PER_IF": 2,
+        "SCHED_PER_IF": 2,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_mqnic_core_pcie_us/test_mqnic_core_pcie_us-2-1-1/01ij2qc6_results.xml",
+      "xml_sha256": "add73fb30439722f7c772653ab84f7ee45ab2722cf1e9c59983f36d7c1ed28a7",
+      "cases": [
+        {
+          "name": "raw_and_normal_nic",
+          "classname": "test_mqnic_core_pcie_us",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "62.08159017562866",
+          "sim_time_ns": "78771.523438",
+          "ratio_time": "1268.8386881707695"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_mqnic_core_pcie_us/test_mqnic_core_pcie_us-2-1-2/z7wurj2d_results.xml",
+      "xml_sha256": "da9525028bced7254e5dc02d4bf827c9a29abbfc8cbc66bbb840703310366e26",
+      "cases": [
+        {
+          "name": "raw_and_normal_nic",
+          "classname": "test_mqnic_core_pcie_us",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "54.84599852561951",
+          "sim_time_ns": "78771.523438",
+          "ratio_time": "1436.2310023620862"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 2
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_mqnic_core_pcie_us/test_mqnic_core_pcie_us-2-1-4/3q23htwm_results.xml",
+      "xml_sha256": "fd520684838e4c8416895dccda42a06875c406149f7ce7718271f31f65f61a6d",
+      "cases": [
+        {
+          "name": "raw_and_normal_nic",
+          "classname": "test_mqnic_core_pcie_us",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "63.543904066085815",
+          "sim_time_ns": "78771.523438",
+          "ratio_time": "1239.6393422109763"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_dma_read/dma/asdd8ugf_results.xml",
+      "xml_sha256": "489d57568dea0cb3881840155c60a2361f81f9648032e6277b57fcaf52588da9",
+      "cases": [
+        {
+          "name": "dma_protocol",
+          "classname": "test_raw_dma_read",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "19",
+          "time": "0.5578930377960205",
+          "sim_time_ns": "2842.001",
+          "ratio_time": "5094.168249934508"
+        }
+      ],
+      "parameters": {},
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_mr_table/mr/da8uzkod_results.xml",
+      "xml_sha256": "5fe26f779969968d0cffbe316a84467407b478997df22b8b5bbf6bb80bb96739",
+      "cases": [
+        {
+          "name": "mr_protection",
+          "classname": "test_raw_mr_table",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "0.14586162567138672",
+          "sim_time_ns": "2058.001",
+          "ratio_time": "14109.269593885465"
+        }
+      ],
+      "parameters": {},
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_coexist/coexist_2x1_1/iy5l9j3__results.xml",
+      "xml_sha256": "e21b6faa763a8a7d87fc5e81b478bec3db5e554a93d4506befe0c5c0591bb1ac",
+      "cases": [
+        {
+          "name": "both_ports_coexist",
+          "classname": "test_raw_packet_coexist",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "225.42044472694397",
+          "sim_time_ns": "210931.523438",
+          "ratio_time": "935.7249014990869"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_coexist/coexist_2x1_4/4xz3yoer_results.xml",
+      "xml_sha256": "53e97d66d418847bf8ac6ad91224b710813df97754a36355a94e5c9100202a57",
+      "cases": [
+        {
+          "name": "both_ports_coexist",
+          "classname": "test_raw_packet_coexist",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "16",
+          "time": "191.33219695091248",
+          "sim_time_ns": "187575.523438",
+          "ratio_time": "980.3657012631477"
+        }
+      ],
+      "parameters": {
+        "IF_COUNT": 2,
+        "PORTS_PER_IF": 1,
+        "SCHED_PER_IF": 1,
+        "CLK_PERIOD_NS_NUM": 4,
+        "CLK_PERIOD_NS_DENOM": 1,
+        "PTP_CLK_PERIOD_NS_NUM": 32,
+        "PTP_CLK_PERIOD_NS_DENOM": 5,
+        "PTP_CLOCK_PIPELINE": 0,
+        "PTP_CLOCK_CDC_PIPELINE": 0,
+        "PTP_SEPARATE_TX_CLOCK": 0,
+        "PTP_SEPARATE_RX_CLOCK": 0,
+        "PTP_PORT_CDC_PIPELINE": 0,
+        "PTP_PEROUT_ENABLE": 0,
+        "PTP_PEROUT_COUNT": 1,
+        "EVENT_QUEUE_OP_TABLE_SIZE": 32,
+        "TX_QUEUE_OP_TABLE_SIZE": 32,
+        "RX_QUEUE_OP_TABLE_SIZE": 32,
+        "CQ_OP_TABLE_SIZE": 32,
+        "EQN_WIDTH": 6,
+        "TX_QUEUE_INDEX_WIDTH": 13,
+        "RX_QUEUE_INDEX_WIDTH": 8,
+        "CQN_WIDTH": 14,
+        "EQ_PIPELINE": 3,
+        "TX_QUEUE_PIPELINE": 4,
+        "RX_QUEUE_PIPELINE": 3,
+        "CQ_PIPELINE": 5,
+        "TX_DESC_TABLE_SIZE": 32,
+        "RX_DESC_TABLE_SIZE": 32,
+        "RX_INDIR_TBL_ADDR_WIDTH": 8,
+        "TX_SCHEDULER_OP_TABLE_SIZE": 32,
+        "TX_SCHEDULER_PIPELINE": 4,
+        "TDMA_INDEX_WIDTH": 6,
+        "PTP_TS_ENABLE": 1,
+        "PTP_TS_FMT_TOD": 1,
+        "PTP_TS_WIDTH": 96,
+        "TX_CPL_ENABLE": 1,
+        "TX_CPL_FIFO_DEPTH": 32,
+        "TX_TAG_WIDTH": 16,
+        "TX_CHECKSUM_ENABLE": 1,
+        "RX_HASH_ENABLE": 1,
+        "RX_CHECKSUM_ENABLE": 1,
+        "LFC_ENABLE": 1,
+        "PFC_ENABLE": 1,
+        "MAC_CTRL_ENABLE": 1,
+        "TX_FIFO_DEPTH": 32768,
+        "RX_FIFO_DEPTH": 131072,
+        "MAX_TX_SIZE": 9214,
+        "MAX_RX_SIZE": 9214,
+        "TX_RAM_SIZE": 131072,
+        "RX_RAM_SIZE": 131072,
+        "DDR_CH": 2,
+        "DDR_ENABLE": 0,
+        "DDR_GROUP_SIZE": 1,
+        "AXI_DDR_DATA_WIDTH": 512,
+        "AXI_DDR_ADDR_WIDTH": 34,
+        "AXI_DDR_ID_WIDTH": 8,
+        "AXI_DDR_MAX_BURST_LEN": 256,
+        "HBM_CH": 2,
+        "HBM_ENABLE": 0,
+        "HBM_GROUP_SIZE": 2,
+        "AXI_HBM_DATA_WIDTH": 256,
+        "AXI_HBM_ADDR_WIDTH": 33,
+        "AXI_HBM_ID_WIDTH": 6,
+        "AXI_HBM_MAX_BURST_LEN": 16,
+        "APP_ID": 305430544,
+        "APP_ENABLE": 1,
+        "APP_CTRL_ENABLE": 1,
+        "APP_DMA_ENABLE": 1,
+        "APP_AXIS_DIRECT_ENABLE": 0,
+        "APP_AXIS_SYNC_ENABLE": 1,
+        "APP_AXIS_IF_ENABLE": 0,
+        "APP_STAT_ENABLE": 0,
+        "DMA_IMM_ENABLE": 1,
+        "DMA_IMM_WIDTH": 32,
+        "DMA_LEN_WIDTH": 16,
+        "DMA_TAG_WIDTH": 16,
+        "RAM_ADDR_WIDTH": 17,
+        "RAM_PIPELINE": 2,
+        "AXIS_PCIE_DATA_WIDTH": 512,
+        "PF_COUNT": 1,
+        "VF_COUNT": 0,
+        "IRQ_INDEX_WIDTH": 6,
+        "AXIL_CTRL_DATA_WIDTH": 32,
+        "AXIL_CTRL_ADDR_WIDTH": 24,
+        "AXIL_CSR_PASSTHROUGH_ENABLE": 0,
+        "AXIL_APP_CTRL_DATA_WIDTH": 32,
+        "AXIL_APP_CTRL_ADDR_WIDTH": 24,
+        "AXIS_ETH_DATA_WIDTH": 512,
+        "AXIS_ETH_SYNC_DATA_WIDTH": 512,
+        "AXIS_ETH_RX_USE_READY": 0,
+        "AXIS_ETH_TX_PIPELINE": 0,
+        "AXIS_ETH_TX_FIFO_PIPELINE": 2,
+        "AXIS_ETH_TX_TS_PIPELINE": 0,
+        "AXIS_ETH_RX_PIPELINE": 0,
+        "AXIS_ETH_RX_FIFO_PIPELINE": 2,
+        "STAT_ENABLE": 1,
+        "STAT_DMA_ENABLE": 1,
+        "STAT_PCIE_ENABLE": 1,
+        "STAT_INC_WIDTH": 24,
+        "STAT_ID_WIDTH": 12,
+        "RAW_TX_OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_csr/csr/192azgjk_results.xml",
+      "xml_sha256": "61f0987575d991d3dc8887c196d4a47006bdce2afc5aeb0c4f8235065b03650a",
+      "cases": [
+        {
+          "name": "csr_ownership",
+          "classname": "test_raw_packet_csr",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "0.10431599617004395",
+          "sim_time_ns": "992.001",
+          "ratio_time": "9509.577020028204"
+        }
+      ],
+      "parameters": {
+        "RB_BASE_ADDR": 256,
+        "RB_NEXT_PTR": 512
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp/qp_256_1/eg9ksak2_results.xml",
+      "xml_sha256": "8774b6438da07d7c70867ef73f3e754e9a76e235964af3ec3f056baeb3af12da",
+      "cases": [
+        {
+          "name": "raw_sq_to_ethernet",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "14",
+          "time": "4.104368448257446",
+          "sim_time_ns": "14192.001",
+          "ratio_time": "3457.779480306006"
+        },
+        {
+          "name": "pipeline_reorder_stop",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "141",
+          "time": "0.5964474678039551",
+          "sim_time_ns": "2092.001",
+          "ratio_time": "3507.435462342536"
+        },
+        {
+          "name": "pipeline_cq_credit",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "207",
+          "time": "1.6365246772766113",
+          "sim_time_ns": "5356.001",
+          "ratio_time": "3272.7896342590316"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp/qp_256_2/_e545w1u_results.xml",
+      "xml_sha256": "cebd4b5bd1995a66e714b45aaa8180c993f859a06aa347b0738645d07f04698b",
+      "cases": [
+        {
+          "name": "raw_sq_to_ethernet",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "14",
+          "time": "4.123856067657471",
+          "sim_time_ns": "14192.001",
+          "ratio_time": "3441.439460340252"
+        },
+        {
+          "name": "pipeline_reorder_stop",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "141",
+          "time": "1.0185635089874268",
+          "sim_time_ns": "3372.001",
+          "ratio_time": "3310.545655962258"
+        },
+        {
+          "name": "pipeline_cq_credit",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "207",
+          "time": "1.5741102695465088",
+          "sim_time_ns": "5024.001",
+          "ratio_time": "3191.644891210438"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp/qp_256_4/086cli_y_results.xml",
+      "xml_sha256": "43c4497604267e93f2cb1f0472cda404e1bb39795d3c19076494a2bedf8117cf",
+      "cases": [
+        {
+          "name": "raw_sq_to_ethernet",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "14",
+          "time": "4.200922727584839",
+          "sim_time_ns": "14192.001",
+          "ratio_time": "3378.3056533770505"
+        },
+        {
+          "name": "pipeline_reorder_stop",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "141",
+          "time": "1.9511120319366455",
+          "sim_time_ns": "6120.001",
+          "ratio_time": "3136.6732918587845"
+        },
+        {
+          "name": "pipeline_cq_credit",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "207",
+          "time": "1.5914130210876465",
+          "sim_time_ns": "5024.001",
+          "ratio_time": "3156.943504563235"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp/qp_512_1/g8suyl39_results.xml",
+      "xml_sha256": "ba5ec6f20d1784fd37623c5f05c41bebedae2b74e4d4599e15ea144e1ea55a42",
+      "cases": [
+        {
+          "name": "raw_sq_to_ethernet",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "14",
+          "time": "3.716989040374756",
+          "sim_time_ns": "12312.001",
+          "ratio_time": "3312.358703849897"
+        },
+        {
+          "name": "pipeline_reorder_stop",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "141",
+          "time": "0.5542678833007812",
+          "sim_time_ns": "1904.0010000000002",
+          "ratio_time": "3435.1638573414643"
+        },
+        {
+          "name": "pipeline_cq_credit",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "207",
+          "time": "1.3172111511230469",
+          "sim_time_ns": "4012.001",
+          "ratio_time": "3045.8298174741312"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp/qp_512_2/mv3yyaxn_results.xml",
+      "xml_sha256": "4aa0782b2d6120d840cf61a648fd0ab4b6734bb6246df9048e1561c9c4700194",
+      "cases": [
+        {
+          "name": "raw_sq_to_ethernet",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "14",
+          "time": "3.7326953411102295",
+          "sim_time_ns": "12312.001",
+          "ratio_time": "3298.4210804458517"
+        },
+        {
+          "name": "pipeline_reorder_stop",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "141",
+          "time": "0.8801357746124268",
+          "sim_time_ns": "2744.001",
+          "ratio_time": "3117.701926396911"
+        },
+        {
+          "name": "pipeline_cq_credit",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "207",
+          "time": "1.2541835308074951",
+          "sim_time_ns": "3680.001",
+          "ratio_time": "2934.180612011915"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp/qp_512_4/jy8l63k7_results.xml",
+      "xml_sha256": "68fdf8f7e821fa63f4ef7b662541cadde4059f838e1e7f83e1095846bd243627",
+      "cases": [
+        {
+          "name": "raw_sq_to_ethernet",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "14",
+          "time": "3.734875440597534",
+          "sim_time_ns": "12312.001",
+          "ratio_time": "3296.4957455261833"
+        },
+        {
+          "name": "pipeline_reorder_stop",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "141",
+          "time": "1.0306363105773926",
+          "sim_time_ns": "4468.001",
+          "ratio_time": "4335.1868686800835"
+        },
+        {
+          "name": "pipeline_cq_credit",
+          "classname": "test_raw_packet_qp",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "207",
+          "time": "0.6507902145385742",
+          "sim_time_ns": "3680.001",
+          "ratio_time": "5654.665540122186"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_drain/qp_drain_cq_error/acjflib9_results.xml",
+      "xml_sha256": "5b13b8fd5050a36c84263cb934238f74f91cf59e141d751f9921ef062bc5da09",
+      "cases": [
+        {
+          "name": "fatal_drain_ownership",
+          "classname": "test_raw_packet_qp_drain",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "170",
+          "time": "0.39156246185302734",
+          "sim_time_ns": "1396.001",
+          "ratio_time": "3565.206412774031"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4,
+        "WATCHDOG_CYCLES": 0
+      },
+      "scenario": {
+        "RAW_DRAIN_SCENARIO": "cq_error"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_drain/qp_drain_late_reset/md8tuwt0_results.xml",
+      "xml_sha256": "7dbe1203fe36b101eecdd5219caf69ab3402b2a455a6182b6241d686516dd4ab",
+      "cases": [
+        {
+          "name": "fatal_drain_ownership",
+          "classname": "test_raw_packet_qp_drain",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "170",
+          "time": "0.46106433868408203",
+          "sim_time_ns": "1444.001",
+          "ratio_time": "3131.8861140319486"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 2,
+        "WATCHDOG_CYCLES": 128
+      },
+      "scenario": {
+        "RAW_DRAIN_SCENARIO": "late_reset"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_fault/qp_fault/id9_z76s_results.xml",
+      "xml_sha256": "6becd00f90eaf2d061ecd632c1633321283ed1905040b0f50965804e9f105e98",
+      "cases": [
+        {
+          "name": "missing_status_quarantine",
+          "classname": "test_raw_packet_qp_fault",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "10",
+          "time": "0.534599781036377",
+          "sim_time_ns": "1848.001",
+          "ratio_time": "3456.7934098615956"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 2,
+        "WATCHDOG_CYCLES": 128
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_missing/qp_missing_cq/m2o4qbsa_results.xml",
+      "xml_sha256": "dc21e9033095900158e5efe4b5722a129788601a1e6204882555433cdc1017f3",
+      "cases": [
+        {
+          "name": "missing_completion",
+          "classname": "test_raw_packet_qp_missing",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "0.47333502769470215",
+          "sim_time_ns": "1644.001",
+          "ratio_time": "3473.2291163973805"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 2,
+        "WATCHDOG_CYCLES": 128
+      },
+      "scenario": {
+        "RAW_MISSING_STAGE": "cq"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_missing/qp_missing_mac/o88o5wkv_results.xml",
+      "xml_sha256": "4816dc7fc0865280acad7d2047a8598fca58f063829dc897d5d8c05dfd57f575",
+      "cases": [
+        {
+          "name": "missing_completion",
+          "classname": "test_raw_packet_qp_missing",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "0.47151970863342285",
+          "sim_time_ns": "1636.001",
+          "ratio_time": "3469.6343971316132"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 2,
+        "WATCHDOG_CYCLES": 128
+      },
+      "scenario": {
+        "RAW_MISSING_STAGE": "mac"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_missing/qp_missing_sq/zwwz1dhp_results.xml",
+      "xml_sha256": "79f4c9bd27efb24aeb4720754632afb0aa3cbf14a405c00f6f92f605fb501740",
+      "cases": [
+        {
+          "name": "missing_completion",
+          "classname": "test_raw_packet_qp_missing",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "0.431506872177124",
+          "sim_time_ns": "1504.001",
+          "ratio_time": "3485.462450254189"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 2,
+        "WATCHDOG_CYCLES": 128
+      },
+      "scenario": {
+        "RAW_MISSING_STAGE": "sq"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_phases/phases_256_1/dq6anl_f_results.xml",
+      "xml_sha256": "3d847f274767e16fd41d994ab37670eaaa9196f276b583168a9197219203e8aa",
+      "cases": [
+        {
+          "name": "phase_wait_metrics",
+          "classname": "test_raw_packet_qp_phases",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "129.39077019691467",
+          "sim_time_ns": "747276.001",
+          "ratio_time": "5775.342397782704"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_phases/phases_256_2/zwhla29q_results.xml",
+      "xml_sha256": "a9cc0f5c367144de130552045f18025915bfa9b5e91a4e917ba5ce2d21900169",
+      "cases": [
+        {
+          "name": "phase_wait_metrics",
+          "classname": "test_raw_packet_qp_phases",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "117.46924638748169",
+          "sim_time_ns": "380456.001",
+          "ratio_time": "3238.771105630792"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_phases/phases_256_4/6t5v9q71_results.xml",
+      "xml_sha256": "9526b95e9624e7514f3523b6e37428993826908f2d0d18619e4dbb59f1016730",
+      "cases": [
+        {
+          "name": "phase_wait_metrics",
+          "classname": "test_raw_packet_qp_phases",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "75.79062414169312",
+          "sim_time_ns": "290976.001",
+          "ratio_time": "3839.2084020315046"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_phases/phases_512_1/0c2ru9f6_results.xml",
+      "xml_sha256": "4fcea3bd1290641ba6f400a03634afb30354bd0cb1acc145c428ab97f31449f6",
+      "cases": [
+        {
+          "name": "phase_wait_metrics",
+          "classname": "test_raw_packet_qp_phases",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "131.41824221611023",
+          "sim_time_ns": "634376.001",
+          "ratio_time": "4827.153295482394"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_phases/phases_512_2/51gf8p09_results.xml",
+      "xml_sha256": "1f6764e1194be3fdd23296577c2439d5a5f255812f150e9e4e3d5753c5655259",
+      "cases": [
+        {
+          "name": "phase_wait_metrics",
+          "classname": "test_raw_packet_qp_phases",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "66.58647751808167",
+          "sim_time_ns": "319116.001",
+          "ratio_time": "4792.504617973575"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_phases/phases_512_4/r6ohs5th_results.xml",
+      "xml_sha256": "e0aa6e1867ef31180cbc47e5e1f97388de338fe19c8f2d77f4ae0223e4678c25",
+      "cases": [
+        {
+          "name": "phase_wait_metrics",
+          "classname": "test_raw_packet_qp_phases",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "57.937421560287476",
+          "sim_time_ns": "189756.001",
+          "ratio_time": "3275.1889174520325"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_segments/qp_segments/d0oz955k_results.xml",
+      "xml_sha256": "48ba9c5ee17517f06e3669bf6bd41b8ae1006702a1579be7cc6572f098256317",
+      "cases": [
+        {
+          "name": "independent_cq_segments",
+          "classname": "test_raw_packet_qp_segments",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "0.6162738800048828",
+          "sim_time_ns": "4536.001",
+          "ratio_time": "7360.365491985578"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4,
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "RAM_SEG_DATA_WIDTH": 128
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_sq_tags/sq_generation/dox_y64i_results.xml",
+      "xml_sha256": "ce21c166b4fc33bc9965cb0a4f9ab2955253c8514766a565c5d2595eb54ac7e0",
+      "cases": [
+        {
+          "name": "sq_generation_isolation",
+          "classname": "test_raw_packet_qp_sq_tags",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "0.4252176284790039",
+          "sim_time_ns": "1576.001",
+          "ratio_time": "3706.339752745737"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_cq_desc/f9kcmd1e_results.xml",
+      "xml_sha256": "da7eecd6a457b7af4f09c78520b2e7b2b9b3f4a3c69b2926a1b8d6400c5a5752",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.4359931945800781",
+          "sim_time_ns": "2092.001",
+          "ratio_time": "4798.24232581173"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "cq_desc"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_cq_status/f12_iibb_results.xml",
+      "xml_sha256": "ad4bd74a171291eb28bce606fee37a4471ed444caf6ac52dfa48b968ec09228a",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.7427370548248291",
+          "sim_time_ns": "2116.001",
+          "ratio_time": "2848.9234329355613"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "cq_status"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_mac_wait/26eeu4rw_results.xml",
+      "xml_sha256": "dc2263463c99fb4312436d3e5fc25dda8d93dfd3bb900723e98f7eb5330d9476",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.7393178939819336",
+          "sim_time_ns": "2092.001",
+          "ratio_time": "2829.636638080779"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "mac_wait"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_payload_desc/d1jxs7lr_results.xml",
+      "xml_sha256": "66af131570baefad95ef156a80ce0cf5b3d50bcda0719fa3561044d4661d8f76",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.7197291851043701",
+          "sim_time_ns": "2036.001",
+          "ratio_time": "2828.843184544133"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "payload_desc"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_payload_status/ar1ht93l_results.xml",
+      "xml_sha256": "7ea153d7b341f0228bf842267da18a3ba82ece8d3e93ac49ccf58b215368e37c",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.7623288631439209",
+          "sim_time_ns": "2128.001",
+          "ratio_time": "2791.447501048183"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "payload_status"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_sq_desc/9rxha4jt_results.xml",
+      "xml_sha256": "527b4e6142d0b8c087ff5bc265032d9ce3174166d61be73b6a5fa190f84e2685",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.7164325714111328",
+          "sim_time_ns": "2036.001",
+          "ratio_time": "2841.8599059361"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "sq_desc"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_sq_status/b7jm7n72_results.xml",
+      "xml_sha256": "1bd69e625f7d4332054b3a4da802e686f90b38def32f1a6cd349c9b6b8e6e157",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.7220165729522705",
+          "sim_time_ns": "2036.001",
+          "ratio_time": "2819.8812551835863"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "sq_status"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop/qp_stop_tx_stream/3c7vygt7_results.xml",
+      "xml_sha256": "f1b15ff6efc212083a5f682440f478dba8d30924b399af9bdb42926c44f2cf39",
+      "cases": [
+        {
+          "name": "stop_at_boundary",
+          "classname": "test_raw_packet_qp_stop",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "17",
+          "time": "0.6974852085113525",
+          "sim_time_ns": "1932.001",
+          "ratio_time": "2769.952647631744"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STOP_STAGE": "tx_stream"
+      },
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stop_midframe/qp_stop_midframe/xczfxco6_results.xml",
+      "xml_sha256": "8f446e73f394b54a8e999f6634dd4c3b1d6179123baca5372af8c6710884e3a3",
+      "cases": [
+        {
+          "name": "stop_inside_frame",
+          "classname": "test_raw_packet_qp_stop_midframe",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "13",
+          "time": "1.0714240074157715",
+          "sim_time_ns": "2924.001",
+          "ratio_time": "2729.079225182348"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4,
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_1_101/2sdgoguv_results.xml",
+      "xml_sha256": "bddd6c4fd5823a084d8b42dda3acb5df8e95652321a37a1357d245d172d1e459",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "294.1659324169159",
+          "sim_time_ns": "1891644.001",
+          "ratio_time": "6430.5339012507"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "101"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_1_11/fgb12iaa_results.xml",
+      "xml_sha256": "7060d060d7a6c7a5f354ac3c9f28d806b704480a0c28ce60a3d6a83eecd39ac9",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "412.9320855140686",
+          "sim_time_ns": "2656872.001",
+          "ratio_time": "6434.16216420286"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "11"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_1_29/5l2vsid3_results.xml",
+      "xml_sha256": "9aad0c6248ce704fdb7c76b3f362a835f9e40863001a313f1deb5abe3991a08a",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "255.83318376541138",
+          "sim_time_ns": "1866684.001",
+          "ratio_time": "7296.488960211171"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "29"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_2_101/td32e8hd_results.xml",
+      "xml_sha256": "15c72eb922786e30dc7d58b5f3de1017d634defd973f902d5c2229768abb91ad",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "161.69212412834167",
+          "sim_time_ns": "1132844.001",
+          "ratio_time": "7006.179225531202"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "101"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_2_11/pwiis74d_results.xml",
+      "xml_sha256": "ba9a3e2303fbc0a731e423a30d7af9171ba003b9ce7ccb079b1d40bccaefc46b",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "219.57660722732544",
+          "sim_time_ns": "1510172.001",
+          "ratio_time": "6877.65431877966"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "11"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_2_29/t3oxaug__results.xml",
+      "xml_sha256": "a5502d08ea2d38ff6c9b3de044b566da82d9b06e6f9252d1c6aaad6ad8a582c5",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "157.62680220603943",
+          "sim_time_ns": "1104404.001",
+          "ratio_time": "7006.4480503537425"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "29"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_4_101/61lj06ta_results.xml",
+      "xml_sha256": "958b60435658067f5abb10fc88ac9ee5d454392f7515356e4bf084c1c376d500",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "118.53040027618408",
+          "sim_time_ns": "700864.001",
+          "ratio_time": "5912.9472216995655"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "101"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_4_11/4_37scdz_results.xml",
+      "xml_sha256": "30705ec7ea3e4b8a4669eb0af83705fa6112bb5964985b8f6eec07f2d14e7aeb",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "163.55021381378174",
+          "sim_time_ns": "998692.001",
+          "ratio_time": "6106.332591757481"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "11"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_256_4_29/9c2tzbqj_results.xml",
+      "xml_sha256": "f4d39f2f8b1f7ab2003ad2bc72dea2a4b6431eccd169872620c2fe5dc6b68a48",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "131.41739511489868",
+          "sim_time_ns": "678604.001",
+          "ratio_time": "5163.730420974288"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 256,
+        "AXIS_KEEP_WIDTH": 32,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "29"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_1_101/ry_ozi69_results.xml",
+      "xml_sha256": "49f85cac486f655d2836df535a6f851cde36c038a740a8fa9e270eb09ec7d537",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "310.84311628341675",
+          "sim_time_ns": "1709144.001",
+          "ratio_time": "5498.41354518418"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "101"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_1_11/veqzjsq4_results.xml",
+      "xml_sha256": "62904ea215fd264885b8a95d7e0a670fe1bf1a043012604bbd903b320370c839",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "348.53722977638245",
+          "sim_time_ns": "2353472.001",
+          "ratio_time": "6752.426426611473"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "11"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_1_29/pi1r2ryl_results.xml",
+      "xml_sha256": "0e501f1d6a751002b80799159478ee676f16edd1e32d6b228225bbcbe7b24ad2",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "261.5206582546234",
+          "sim_time_ns": "1695124.001",
+          "ratio_time": "6481.797699322026"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 1
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "29"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_2_101/5gxt_0m6_results.xml",
+      "xml_sha256": "0ad20d231adf86f9319554be074ef08783e52dcb38e90b8eb3e02c79824e5bcc",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "172.15055394172668",
+          "sim_time_ns": "972484.001",
+          "ratio_time": "5649.032075314657"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "101"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_2_11/6p6df8kt_results.xml",
+      "xml_sha256": "f9d345ce3d0d897359934da0d5a7ca20ffbe6390c55006c662bbd82e34559e22",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "191.508704662323",
+          "sim_time_ns": "1289032.001",
+          "ratio_time": "6730.931647586885"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "11"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_2_29/1eyk4nm9_results.xml",
+      "xml_sha256": "f7bc519c5519f384ff820a75dc21d20359071d30d122d6fb271ae3aa2271fe6d",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "206.39317989349365",
+          "sim_time_ns": "958064.001",
+          "ratio_time": "4641.936334787786"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 2
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "29"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_4_101/11d57174_results.xml",
+      "xml_sha256": "0baf08051833d3eaf4df6936c5e739a95686a6398aefe70a7c5bacaac48251df",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "104.12789344787598",
+          "sim_time_ns": "557424.001",
+          "ratio_time": "5353.263016686626"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "101"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_4_11/cmkw6bwt_results.xml",
+      "xml_sha256": "3e2a0b9ad0e61827db60f3e9bb724f1dd97e53f9cc959841574c97252d634785",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "155.1464126110077",
+          "sim_time_ns": "744812.001",
+          "ratio_time": "4800.703983194488"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "11"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_stress/stress_512_4_29/ynnzfy4r_results.xml",
+      "xml_sha256": "a16c569e2f4d33969561a8f5cb3a094b17979150827508dbb6ac76b494bed280",
+      "cases": [
+        {
+          "name": "stress_and_latency",
+          "classname": "test_raw_packet_qp_stress",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "93",
+          "time": "90.74732375144958",
+          "sim_time_ns": "543804.001",
+          "ratio_time": "5992.507310622627"
+        }
+      ],
+      "parameters": {
+        "AXIS_DATA_WIDTH": 512,
+        "AXIS_KEEP_WIDTH": 64,
+        "OP_TABLE_SIZE": 4
+      },
+      "scenario": {
+        "RAW_STRESS_COUNT": "1024",
+        "RAW_STRESS_SEED": "29"
+      },
+      "process_timeout_seconds": 600.0
+    },
+    {
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/test_raw_packet_qp_wrap/qp_wrap/d8r3m1hy_results.xml",
+      "xml_sha256": "928d677f0f5dd01c84421df114541ee54ee1718ce275c3ff460d523997fa8ab4",
+      "cases": [
+        {
+          "name": "counters_and_tag_wrap",
+          "classname": "test_raw_packet_qp_wrap",
+          "file": "/home/sj/miniforge3/envs/corundum-test/lib/python3.10/site-packages/cocotb/decorators.py",
+          "lineno": "12",
+          "time": "2.3685414791107178",
+          "sim_time_ns": "8408.001",
+          "ratio_time": "3549.86436765162"
+        }
+      ],
+      "parameters": {
+        "OP_TABLE_SIZE": 4,
+        "DMA_TAG_WIDTH": 3,
+        "TX_TAG_WIDTH": 4
+      },
+      "scenario": {},
+      "process_timeout_seconds": 180.0
+    }
+  ],
+  "runner_contracts": [
+    {
+      "expected_outcome": "empty",
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/runner_fixture_empty/build/qv9995vw_results.xml",
+      "xml_sha256": "abdfda0d4a4c958201b295c7bbe2455f152bc8383ab929818d9fcc6df9534314"
+    },
+    {
+      "expected_outcome": "fail",
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/runner_fixture_fail/build/wbnxh0q0_results.xml",
+      "xml_sha256": "9c0e4c43f8906a4e20734183bbd679c05a2b43e085cafe843793cc430114a3b5"
+    },
+    {
+      "expected_outcome": "pass",
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/runner_fixture_pass/build/irv7zek9_results.xml",
+      "xml_sha256": "eaf83e7201d4f3f46a2812a56cc70f860bd811a8e8868f9350df05076201e10a"
+    },
+    {
+      "expected_outcome": "skip",
+      "xml": "/tmp/raw-pipeline-final-acceptance-two/runner_fixture_skip/build/amw3w1bk_results.xml",
+      "xml_sha256": "d65f9c3a7b842ec0501ff68ae4820b7ac5f844ecde58fe288066f39bdcdb112f"
+    }
+  ],
+  "source_sha256": {
+    "fpga/mqnic/Alveo/fpga_100g/tb/fpga_core/test_fpga_core.v": "2da57f06b94fdf9490de43ee22c28044c78f81a41f1a72eb5c681f0d12f382fd",
+    "fpga/mqnic/Alveo/fpga_100g/rtl/fpga_core.v": "df81a920be16d2b57d08bbb3b6f9843d6cfef7aa9bd25698a256ba9c566cfd5a",
+    "fpga/common/rtl/mqnic_core_pcie_us.v": "02adba06ee9ad8669c0a6509cc9fc6847461be06f16652514d56da2f080cba28",
+    "fpga/common/rtl/mqnic_core_pcie.v": "306203e0de5e715c27425b68151eabcba7dd27ee781d47c0976f1f03572bb6db",
+    "fpga/common/rtl/mqnic_core.v": "c9d42227e2e760917e0f91d060b55c29582af8dd96eecf518dc7a1f566e75d55",
+    "fpga/common/rtl/mqnic_dram_if.v": "4105cc699d188192c000d10203a14e979db5a0330a187ccea4c3a4ac4ca2ac3d",
+    "fpga/common/rtl/mqnic_interface.v": "c6c0df07823cf0d7635de800e895b4ec3bb0235f8f2f9360b3bbf4821a01f94d",
+    "fpga/common/rtl/mqnic_interface_tx.v": "700f0d63068df4a9391f573c49c1da9af18ea789b095c2cbfe50d3a9da68cb3b",
+    "fpga/common/rtl/mqnic_interface_rx.v": "e2846d1ac11adf7e2080e62564a33cc553e659be40760e5696d83cc0d81dff88",
+    "fpga/common/rtl/mqnic_port.v": "08453b7781cbea80aaa4810a1a2631f3862bd34221fce0f10faef8f1b8bdb40c",
+    "fpga/common/rtl/mqnic_port_tx.v": "bed4ef829b9f391b2747c8f8db3121c6f1887a440afad9120d5423318297122b",
+    "fpga/common/rtl/mqnic_port_rx.v": "8338b791a5da9f2359a4bed5de8ebf5fb59753a3fbcd1ba2ad6de4a9991019d9",
+    "fpga/common/rtl/mqnic_egress.v": "a2cfad7c7558ddcfc139868228c9bd3595ecd9b2bede07271c6a801771da4e6c",
+    "fpga/common/rtl/mqnic_ingress.v": "f65349dd9dee5eaa7f035e88ffec6840913ab7776aef22c245f69b2703645356",
+    "fpga/common/rtl/mqnic_l2_egress.v": "4ccb720835b9e9fca9ec0b1b131375bc84ee7b74d65688f2626985e629f2db90",
+    "fpga/common/rtl/mqnic_l2_ingress.v": "477726bace1bd0d09152a8fbbbd0e4d563640ead2338a50fb80beff52b8ac4a8",
+    "fpga/common/rtl/mqnic_rx_queue_map.v": "ef4b73635e9e3b4d17a93400bdd349fd8fe2a08142c42357a8898166df725655",
+    "fpga/common/rtl/mqnic_ptp.v": "121d751e9bd0ddb882b73b008fb785f1bc514847fbaeb7c5fc7a889561a041ed",
+    "fpga/common/rtl/mqnic_ptp_clock.v": "481eac6408cdc87f00f7ee1afec1e57ad4be9d51103234016768a36f9a72eb7e",
+    "fpga/common/rtl/mqnic_ptp_perout.v": "6cdb7dcffa90597d25f90cdd257241f542650c1661a77eedef94fb201a2b9abf",
+    "fpga/common/rtl/mqnic_rb_clk_info.v": "bc2e66433ea43be5d125d4aebdc765b9eec46145936fbf95a6304a83e60d3b26",
+    "fpga/common/rtl/mqnic_port_map_mac_axis.v": "f8cfa47d32b4d6ed9a5374f0a243ec577b4158e8395c08aa97a4528729f1c9fb",
+    "fpga/common/rtl/cpl_write.v": "243955700e8e90bec64ec038d8f197f7ce9b44fe5ef285268221c36434c0e79b",
+    "fpga/common/rtl/cpl_op_mux.v": "00bf9c1463110f13380766e4bee089617552280730be4a15d62500ffdbe29d72",
+    "fpga/common/rtl/desc_fetch.v": "737b061f564b476037aa3050a4aba05721baa20720927f688b4d46e83f072285",
+    "fpga/common/rtl/desc_op_mux.v": "54409b42fdb36c075d0570307febcfbccf7e0126501434f0c0fdb0b12806677a",
+    "fpga/common/rtl/queue_manager.v": "c940b75bcb3f811fa0bbf6b5831b75881c3d2ad80417920ac8073e242e4d5e3e",
+    "fpga/common/rtl/cpl_queue_manager.v": "1fd90351f92575064c732afbc1c39833dd7b8ce0f102797c32448ce0175e9db4",
+    "fpga/common/rtl/tx_fifo.v": "55c59ff85289afa911f1e10ed4eda2b736627221dc0622982585ad0bbd84acd6",
+    "fpga/common/rtl/rx_fifo.v": "e9d4a43ed2ec595ef4cc9ea2dedd3f8d769ef635cb36f079743bec75474392cc",
+    "fpga/common/rtl/tx_req_mux.v": "14078cc734c20f21cf417ccd06eeb4eb8275b8abfe9cf4f231706e9946f4ec30",
+    "fpga/common/rtl/tx_engine.v": "504b229dd8cf0e529140a6d21b8038b458c17dc0239c60c4042d026422c4bff4",
+    "fpga/common/rtl/rx_engine.v": "4f043050584ab047a7596eae6e560241541362d4d7bcaadf0fd88921f141be67",
+    "fpga/common/rtl/tx_checksum.v": "2d5d1b885daf9a77e0121b39b9b21dbef17d8b2716571a47c659e0f14b241386",
+    "fpga/common/rtl/rx_hash.v": "38cf3e5058ddf3a900717e89f80c654f361389cc16c02a52089b2a2c1f27e8d5",
+    "fpga/common/rtl/rx_checksum.v": "be027f25d0560152706f64981e2c925a888a580d6f51986864c8f4f8accbb0ab",
+    "fpga/common/rtl/rb_drp.v": "fca16c7e298a6cb18ca23faeb5e40a903cd3a23633f98dc2ad6f22839a3bd1c3",
+    "fpga/common/rtl/stats_counter.v": "63f77dea123d1414482cd2ddb3942f6f55550824034f42b81d4875acd7a4b7bf",
+    "fpga/common/rtl/stats_collect.v": "f6194c56986445e887c647b29cd721d84d82a2ea53fa41801cbc1c91cf6371a1",
+    "fpga/common/rtl/stats_pcie_if.v": "2b14d9e488be96f093abba637ddc26d008100fd743c9041d73b9d2a9fb771a2f",
+    "fpga/common/rtl/stats_pcie_tlp.v": "0b776237ff16384388a54fda9b64b27e2dd4d77c67049e77afadb3867216c733",
+    "fpga/common/rtl/stats_dma_if_pcie.v": "613eef6e64b275ff5e81aff745d045d4ef1664775d687468456370911b5525c8",
+    "fpga/common/rtl/stats_dma_latency.v": "e5b70e982267dd4b02ccbc419d6992c135c2574054bf29f15bb9860f21134839",
+    "fpga/common/rtl/mqnic_tx_scheduler_block_rr.v": "ac8e0aa4e28994f4e124bc82dd439095e5566ff9cd919a9673007b0678b060bc",
+    "fpga/common/rtl/tx_scheduler_rr.v": "b03092fc5d231170d17b2838a26e7a2d176848ce4353b6ae3c5a0f3401e94f76",
+    "fpga/lib/eth/rtl/ptp_td_phc.v": "976fe47404b197c16d15390c82da8642483c31ad6727694f23d0dc0db0899416",
+    "fpga/lib/eth/rtl/ptp_td_leaf.v": "aef2c2e2a1d6eedf49e81618025974f288e08d7f9dfe7bc8dbb4d9c1e6283d95",
+    "fpga/lib/eth/rtl/ptp_td_rel2tod.v": "2eefda2745a10c94f63971719ebb798910cd489f85deca0f83d4c46b2a0251ae",
+    "fpga/lib/eth/rtl/ptp_perout.v": "e8562fb34d5fe4e2da2af31c398e379b35eb605b319a6902146b33a0da2a6c66",
+    "fpga/lib/axi/rtl/axil_interconnect.v": "f685b0861d4d7a93a8ce4a938589d57e5fdd186204dea32436828496e1426efe",
+    "fpga/lib/axi/rtl/axil_crossbar.v": "f48acdb965988038196bc0742f2f18174a1ecd35386a061f634bc64ccf6adb27",
+    "fpga/lib/axi/rtl/axil_crossbar_addr.v": "a687cef2780b571b1a1b85746e4e093d0d7131d77bf9d6c610f333b0e27480c0",
+    "fpga/lib/axi/rtl/axil_crossbar_rd.v": "b43f1a86164949e78e01e29864c9a2cad5bd442be8356231d2993beaeb3d4e99",
+    "fpga/lib/axi/rtl/axil_crossbar_wr.v": "6b415d4d265a6694810913b67f62f93bd01128c59afe962d2784d45b9f310663",
+    "fpga/lib/axi/rtl/axil_reg_if.v": "6aac73057466d4c16f79a5575f5fb4136b494d41cd63aaa83fefe90319006a39",
+    "fpga/lib/axi/rtl/axil_reg_if_rd.v": "57f196a4e073bfe1b483c19127088006e1d5fdd33f514d4c6672ab08fd7d8359",
+    "fpga/lib/axi/rtl/axil_reg_if_wr.v": "ec2f3d3d97b694dd4ff046d791fc7a0f95856c41049a107eac1aa3b3daab7412",
+    "fpga/lib/axi/rtl/axil_register_rd.v": "ae1a35af8be25b3fa0f2245ce0ca33287f566279ea5bcf04d822d417ffa5f463",
+    "fpga/lib/axi/rtl/axil_register_wr.v": "af7fd3bc697c3e2d8e921105bf33fab62199a211e4aca031ba28bf08054b6563",
+    "fpga/lib/axi/rtl/arbiter.v": "a001507c82843e36e133dea75491fc044f56660fac0aff0127cf3afec7f927e0",
+    "fpga/lib/axi/rtl/priority_encoder.v": "df28220d95b47df349a72803a9751aad331eb8e1435416e8686d00572a974dd5",
+    "fpga/lib/eth/lib/axis/rtl/axis_adapter.v": "4b9b6649f12e374c24d36f2d42680ecf1f38cca8ae4fda7fd68dbf722b6c8140",
+    "fpga/lib/eth/lib/axis/rtl/axis_arb_mux.v": "bee8d11f32f7fb1c5afdd6cdad872cd7de9dc94bcb4787f9aa119f2ebbc489a6",
+    "fpga/lib/eth/lib/axis/rtl/axis_async_fifo.v": "339734a7984d7d540451c92f0831495837c451d170ba60dfbd59f851b28f4250",
+    "fpga/lib/eth/lib/axis/rtl/axis_async_fifo_adapter.v": "9dc661b88d459a318e40722df277720fe64ef4309230462e8538b1a44da1d57c",
+    "fpga/lib/eth/lib/axis/rtl/axis_demux.v": "b3ec5e59baa6b29f9d2bd077c262b8f3e57ea1de1162e19614f93dc866d5ba38",
+    "fpga/lib/eth/lib/axis/rtl/axis_fifo.v": "cb7d05672272356af90f5217400ce868b299ddcc4d837a2394fb7d5155400dc9",
+    "fpga/lib/eth/lib/axis/rtl/axis_fifo_adapter.v": "7662fbf53def5dfb353a590a3ae7309b4f9519847288c90a42ed63df57c95d00",
+    "fpga/lib/eth/lib/axis/rtl/axis_pipeline_fifo.v": "a7cdccbf905c3f95d4a626fe77d84879a09c3f472dffc5ea2eb7acc9ba113c02",
+    "fpga/lib/eth/lib/axis/rtl/axis_register.v": "599fde2d6c2d806643bbffb7c444297e69a71871f962d4b741ec1914342e0d39",
+    "fpga/lib/pcie/rtl/pcie_axil_master.v": "4b66bd5dc9c5ed0c2616773a310e0deb6b3e0ecd7958f176a33b850feeaf7767",
+    "fpga/lib/pcie/rtl/pcie_tlp_demux.v": "6b3c76538e54e7b71ece96ea5ad17bbc720b8b98d1fe18033a58aaea4b142511",
+    "fpga/lib/pcie/rtl/pcie_tlp_demux_bar.v": "4d3e0499692c627875729d08e8c4c60e60500a78e1885e10acd7afb611c46cd3",
+    "fpga/lib/pcie/rtl/pcie_tlp_mux.v": "73fb3855161b9c81801ee612152046791b9fee5a75b36f1919d5268c5138c340",
+    "fpga/lib/pcie/rtl/pcie_tlp_fifo.v": "7f08e45fac4ad71449164c1dffefba7cc4bb64d9cac67752970a076489e5256e",
+    "fpga/lib/pcie/rtl/pcie_tlp_fifo_raw.v": "d914cf4a293903794f497f8cdf6155d4e166ab26a475593c793903d89f35ea27",
+    "fpga/lib/pcie/rtl/pcie_msix.v": "85da9abfe32cc3ca92934ac9ae2c1228da606496e8762a9015766791410d9570",
+    "fpga/lib/pcie/rtl/irq_rate_limit.v": "fd9a6bc5366f61e8739a7844a6628a1a7cc08e0aa72871d12babd924ce08a65d",
+    "fpga/lib/pcie/rtl/dma_if_pcie.v": "5255c2291f3d431df000d88995c9ea29490634b194437d0ecf71e39bf124d8f3",
+    "fpga/lib/pcie/rtl/dma_if_pcie_rd.v": "9dd0b5efbcd2e4608ded63a9ea7853692bcb65d334625b081c85e86cbe475fbb",
+    "fpga/lib/pcie/rtl/dma_if_pcie_wr.v": "0f4a262f4353ed17bc0f9caa36ce25d7f7570d139557e06b796edf4c86eacfe7",
+    "fpga/lib/pcie/rtl/dma_if_mux.v": "b98f11ef6c7e0acf4433d1bf9e5383b3792c8fde3ef4c8c3e4938e225f19ae52",
+    "fpga/lib/pcie/rtl/dma_if_mux_rd.v": "9a8baf220a009c8fa1105026835a3d7a4419a32a40a9ff5b16185c14ce1572a7",
+    "fpga/lib/pcie/rtl/dma_if_mux_wr.v": "fdb5ea18a19f17ac76e22e215ab01eea572c5145096259eb62af735afc4cef21",
+    "fpga/lib/pcie/rtl/dma_if_desc_mux.v": "338312e054d42f66e36f28946e05b94646ed1d63a41e4e740f4d55cbe278e64b",
+    "fpga/lib/pcie/rtl/dma_ram_demux_rd.v": "41ffae6d95c4781848cb9f392ce419770de78446ac506b6fcaf1ce7fc1627fc7",
+    "fpga/lib/pcie/rtl/dma_ram_demux_wr.v": "77dbe7e0f710744b34e11d8a83a41bac3c63c83b858e2c0bce3aa9a160083cc2",
+    "fpga/lib/pcie/rtl/dma_psdpram.v": "5d06400fe8c45ff27a0eaabb33206b684b2f2c5adf59353fcabe891e9ac29513",
+    "fpga/lib/pcie/rtl/dma_client_axis_sink.v": "a1e03efa7a8810a967b1e4a6b68fc75b0cbfc6f6a2ac137b9aa7321001029dd5",
+    "fpga/lib/pcie/rtl/dma_client_axis_source.v": "e2dc4b2ab3ed88e2d6256e3ebcb7470fe0b11249a1616bbd1746460399ba5044",
+    "fpga/lib/pcie/rtl/pcie_us_if.v": "18ec3da717070040dd197afba830f736885ee4702029fb7000758ebe312beb44",
+    "fpga/lib/pcie/rtl/pcie_us_if_rc.v": "538cf0c6caaa535c7d4f28f96dd9ac3e385a8c26ccf3e5ec4c30d7a8954b4eed",
+    "fpga/lib/pcie/rtl/pcie_us_if_rq.v": "2435f567585bad3583e5e985b42e49d3613921ea6e921bd45fb216ca9310a4b1",
+    "fpga/lib/pcie/rtl/pcie_us_if_cc.v": "0349d7a18d87fa1cd47d7a1e89da18c6c53f052cf926daabc4d706678d90a943",
+    "fpga/lib/pcie/rtl/pcie_us_if_cq.v": "b5e50b2b8f3df3c237b4ddf5ab383482fc3458aa8f2c80e237a4b80dbf37bd50",
+    "fpga/lib/pcie/rtl/pcie_us_cfg.v": "74b252e326c2ea4942c9e1379419cc7127a81e00860db57a502e5556bac73e73",
+    "fpga/lib/pcie/rtl/pulse_merge.v": "be969a374712e76002434cdf6c1ba55f31a250a8b7e088aa1d301b031b39ba6f",
+    "fpga/app/raw_packet/rtl/raw_dma_read.v": "447ad5f7ee844fae768ccf967ca1455e08c48d36d3bf35532a50d57478610f94",
+    "fpga/app/raw_packet/rtl/raw_packet_csr.v": "52c1809df1c140ae74501fd22f0f4d9056c63ca494729dd2a99932ef11b9d175",
+    "fpga/app/raw_packet/rtl/raw_mr_table.v": "688febcd2b1297dc7028850573ccd8722dc97a5cff710474085ee46318a7b1ab",
+    "fpga/app/raw_packet/rtl/raw_packet_qp.v": "20e3f8d6a5623802794d98fc69bc269f3f69b3440e6f91c869cf561f26dd065e",
+    "fpga/app/raw_packet/rtl/mqnic_app_block_raw_packet.v": "dd7ab3959ed26f3928ebd3cf60efdfe6a594175656defea3186ac0fbcf75c697",
+    "fpga/lib/eth/rtl/mac_ctrl_tx.v": "48202a9a8f4b4e9688a4a0eac9dfe7492825be9f1f54a77590008db851b391c1",
+    "fpga/lib/eth/rtl/mac_ctrl_rx.v": "b5c0eda334c078518adb5fb7db324ae966ebddba0031bc91cedd32b831137fb1",
+    "fpga/lib/eth/rtl/mac_pause_ctrl_tx.v": "c5de52ceae4cf7c048262132191b1e4c366deca15d931e4703f6a05eff789c5a",
+    "fpga/lib/eth/rtl/mac_pause_ctrl_rx.v": "4b8d5d985fe5e7d3ec28f0c70a8c212fb7b3df6548cbf4dcaac2473a23b24a57",
+    "fpga/lib/eth/rtl/lfsr.v": "5502c8203b0dfc7246c1a2de93e60c199ded3c1d7840b106350d714f72a9a079",
+    "fpga/app/raw_packet/rtl/mqnic_app_custom_params.vh": "27519870f9e385f429b7b331225f95b239e7a3b4f79a7d4a925081d721fca5f0",
+    "fpga/lib/axi/rtl/axi_vfifo_raw.v": "3ee0d011b2d769f58254be0e53ad0406222f2813f063e346c62a2b6b4fc74806",
+    "fpga/lib/axi/rtl/axi_vfifo_raw_rd.v": "3173828129ebb045f8127d5658469f7aef1bae58c065f8b3b3fffb86684901a5",
+    "fpga/lib/axi/rtl/axi_vfifo_raw_wr.v": "3d9161cd40ae9697bedf1af27de74d18b97b0321efd9da0a3e4ef7f2ce851ca3"
+  },
+  "python_source_sha256": {
+    "fpga/app/raw_packet/tb/check_pipeline_metrics.py": "3a477741b75d76f8f95aefa63d71cbfcead148ff4f2a59c81f11621837a559c8",
+    "fpga/app/raw_packet/tb/collect_pipeline_results.py": "b106b24c18c2f5eb8609423bdf99c61035df29f5032d7aae89694e963c756816",
+    "fpga/app/raw_packet/tb/conftest.py": "2b2f3662a86435d9145f32e3831f81bec48337b40932ddaff5f9eb475f022d19",
+    "fpga/app/raw_packet/tb/core_tb.py": "1dd420dfa1d414a1af4f425508122bd9d99d9b90e3f09aadbf0dd34cc6ce6bc7",
+    "fpga/app/raw_packet/tb/fpga_core/test_fpga_core_raw_packet.py": "f27931661d3a5ad71eca343e45f8a380744177279f3cba32e1b476bd9bff900f",
+    "fpga/app/raw_packet/tb/independent_ram.py": "522d577ae0b78c0d8489e113cb3d5802773469106bdaca601685cf57a8cb99a5",
+    "fpga/app/raw_packet/tb/raw_app.py": "0aa3a481c0b7cbeb67e8cdc3d6a5aba6d891d058f4271320cd82206ee2d501f4",
+    "fpga/app/raw_packet/tb/raw_qp_tb.py": "1b50a3d33868ada8716e46f79c7e2e3b52c8c6c616714c02920acfdadfbb31e3",
+    "fpga/app/raw_packet/tb/raw_scenario.py": "ddebd5be0a01c8510546747103105450a406f867902385c86c402c859ef12aaa",
+    "fpga/app/raw_packet/tb/runner_diagnostic.py": "805926ec0071bc81af37e50afb7fdc960bc7691dd3b66787b262bc03562dcaa1",
+    "fpga/app/raw_packet/tb/sim_runner.py": "87c45044f78f2e31791752e6b1b55d8f762380871f00b0d031816ba94a23bd02",
+    "fpga/app/raw_packet/tb/test_sim_runner.py": "862e3f0072f62ba2aa4dba859888feaf7681458e690d271d7c4d797e6e43831b",
+    "fpga/app/raw_packet/tb/mqnic_core_pcie_us/test_mqnic_core_pcie_us.py": "5ce65d1946905d09c1f2a13d12efc342a8d6731f9da2dd0b7aa1956fdac4de19",
+    "fpga/app/raw_packet/tb/mqnic_core_pcie_us/test_raw_packet_coexist.py": "be5341032976bba8a1e6eaf309f5c825ecee3c69789625b831cff0c6633c6dd4",
+    "fpga/app/raw_packet/tb/raw_dma_read/test_raw_dma_read.py": "7bf2c35d91db373e51c7817583d2d5609fa7a1f4d1a099995c6fa366879fa77f",
+    "fpga/app/raw_packet/tb/raw_mr_table/test_raw_mr_table.py": "311b4f0d713067c27aa2376d90e309ddedfa1971c2e9a539624d5dfdb4a3de4b",
+    "fpga/app/raw_packet/tb/raw_packet_csr/test_raw_packet_csr.py": "f20cd1b4b347742822e0b28669dda7bddaddeb5dfd9667f8412fe51c71a5c1d2",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp.py": "a62d60068caee52a29a1efbd3c3c9a8eaadca09da4dd24aba6ce5142e55c963e",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_drain.py": "d677db634efcb54e5e59a8e02a0230af86c1cda66bf8c9891ee418065335f1b7",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_fault.py": "c15b4ff639913ff3f0aaa79454be0a62edf23f5a7c7acaa18888cb55979db24f",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_missing.py": "f5d04e63e23c6d590073f21e5bd7515d9f9b5242ae64d50bd4163c1f8a442d47",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_phases.py": "90a515c8fe4a2307a9092dcb962aa486e72b0bcf0ee833296f6a71a3141acedf",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_segments.py": "2df964d8f16aebc3d0ccaac82162f59173c431e9afe7353176e0997d3969f2a2",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_sq_tags.py": "b5338c300958eca5fd01fed523a791069087f79909e44a55c7efa43c4ea77256",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_stop.py": "c649aa00e2172428a75f94844461fae49f854028e99600cb77a82489ae6408c1",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_stop_midframe.py": "f560407a107df20d3661b79689f44ed5c6c6acf37aa89df59b569f99cff29c94",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_stress.py": "470b00aaff84f5726b1de2c477a614299d8ed8f2c4993709f23c0bf259efe95a",
+    "fpga/app/raw_packet/tb/raw_packet_qp/test_raw_packet_qp_wrap.py": "1be93671beabaf5dc9075d429c2a1d37942fa648876b9687350197debfb4fb2e"
+  },
+  "stress_metrics": [
+    {
+      "depth": 1,
+      "axis_width": 256,
+      "seeds": [
+        101
+      ],
+      "stress_seed": 101,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 1,
+      "axis_width": 256,
+      "seeds": [
+        11
+      ],
+      "stress_seed": 11,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {
+        "64": {
+          "wqe_per_second": 585480.093676815,
+          "payload_bytes_per_second": 37470725.99531616,
+          "steady_interval_ns": 136640.0,
+          "commit_latency_ns": {
+            "min": 1836.0,
+            "median": 27316.0,
+            "p99": 27456.0,
+            "max": 27456.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 482625.4826254826,
+          "payload_bytes_per_second": 730694980.6949807,
+          "steady_interval_ns": 165760.0,
+          "commit_latency_ns": {
+            "min": 2196.0,
+            "median": 33136.0,
+            "p99": 33276.0,
+            "max": 33276.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 250344.22330704718,
+          "payload_bytes_per_second": 2306671673.5511327,
+          "steady_interval_ns": 319560.0,
+          "commit_latency_ns": {
+            "min": 4116.0,
+            "median": 63896.0,
+            "p99": 64036.0,
+            "max": 64036.0
+          }
+        }
+      }
+    },
+    {
+      "depth": 1,
+      "axis_width": 256,
+      "seeds": [
+        29
+      ],
+      "stress_seed": 29,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 2,
+      "axis_width": 256,
+      "seeds": [
+        101
+      ],
+      "stress_seed": 101,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 2,
+      "axis_width": 256,
+      "seeds": [
+        11
+      ],
+      "stress_seed": 11,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {
+        "64": {
+          "wqe_per_second": 1170960.18735363,
+          "payload_bytes_per_second": 74941451.99063233,
+          "steady_interval_ns": 68320.0,
+          "commit_latency_ns": {
+            "min": 1836.0,
+            "median": 13656.0,
+            "p99": 14016.0,
+            "max": 14016.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 965250.9652509652,
+          "payload_bytes_per_second": 1461389961.3899615,
+          "steady_interval_ns": 82880.0,
+          "commit_latency_ns": {
+            "min": 2196.0,
+            "median": 16556.0,
+            "p99": 17056.0,
+            "max": 17056.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 490918.01669121254,
+          "payload_bytes_per_second": 4523318605.792832,
+          "steady_interval_ns": 162960.0,
+          "commit_latency_ns": {
+            "min": 4116.0,
+            "median": 32576.0,
+            "p99": 34676.0,
+            "max": 34676.0
+          }
+        }
+      }
+    },
+    {
+      "depth": 2,
+      "axis_width": 256,
+      "seeds": [
+        29
+      ],
+      "stress_seed": 29,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 4,
+      "axis_width": 256,
+      "seeds": [
+        101
+      ],
+      "stress_seed": 101,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 4,
+      "axis_width": 256,
+      "seeds": [
+        11
+      ],
+      "stress_seed": 11,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {
+        "64": {
+          "wqe_per_second": 2341920.37470726,
+          "payload_bytes_per_second": 149882903.98126465,
+          "steady_interval_ns": 34160.0,
+          "commit_latency_ns": {
+            "min": 1816.0,
+            "median": 6816.0,
+            "p99": 7656.0,
+            "max": 7656.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 1930501.9305019304,
+          "payload_bytes_per_second": 2922779922.779923,
+          "steady_interval_ns": 41440.0,
+          "commit_latency_ns": {
+            "min": 2196.0,
+            "median": 8276.0,
+            "p99": 9476.0,
+            "max": 9476.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 490918.01669121254,
+          "payload_bytes_per_second": 4523318605.792832,
+          "steady_interval_ns": 162960.0,
+          "commit_latency_ns": {
+            "min": 4116.0,
+            "median": 32576.0,
+            "p99": 34656.0,
+            "max": 34656.0
+          }
+        }
+      }
+    },
+    {
+      "depth": 4,
+      "axis_width": 256,
+      "seeds": [
+        29
+      ],
+      "stress_seed": 29,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 1,
+      "axis_width": 512,
+      "seeds": [
+        101
+      ],
+      "stress_seed": 101,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 1,
+      "axis_width": 512,
+      "seeds": [
+        11
+      ],
+      "stress_seed": 11,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {
+        "64": {
+          "wqe_per_second": 585480.093676815,
+          "payload_bytes_per_second": 37470725.99531616,
+          "steady_interval_ns": 136640.0,
+          "commit_latency_ns": {
+            "min": 1816.0,
+            "median": 27316.0,
+            "p99": 27436.0,
+            "max": 27436.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 525210.0840336134,
+          "payload_bytes_per_second": 795168067.2268908,
+          "steady_interval_ns": 152320.0,
+          "commit_latency_ns": {
+            "min": 2036.0,
+            "median": 30456.0,
+            "p99": 30596.0,
+            "max": 30596.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 334840.1138456387,
+          "payload_bytes_per_second": 3085216808.973715,
+          "steady_interval_ns": 238920.0,
+          "commit_latency_ns": {
+            "min": 3116.0,
+            "median": 47776.0,
+            "p99": 47916.0,
+            "max": 47916.0
+          }
+        }
+      }
+    },
+    {
+      "depth": 1,
+      "axis_width": 512,
+      "seeds": [
+        29
+      ],
+      "stress_seed": 29,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 2,
+      "axis_width": 512,
+      "seeds": [
+        101
+      ],
+      "stress_seed": 101,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 2,
+      "axis_width": 512,
+      "seeds": [
+        11
+      ],
+      "stress_seed": 11,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {
+        "64": {
+          "wqe_per_second": 1170960.18735363,
+          "payload_bytes_per_second": 74941451.99063233,
+          "steady_interval_ns": 68320.0,
+          "commit_latency_ns": {
+            "min": 1816.0,
+            "median": 13656.0,
+            "p99": 14016.0,
+            "max": 14016.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 1050420.168067227,
+          "payload_bytes_per_second": 1590336134.4537816,
+          "steady_interval_ns": 76160.0,
+          "commit_latency_ns": {
+            "min": 2016.0,
+            "median": 15216.0,
+            "p99": 15596.0,
+            "max": 15596.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 669680.2276912774,
+          "payload_bytes_per_second": 6170433617.94743,
+          "steady_interval_ns": 119460.0,
+          "commit_latency_ns": {
+            "min": 3096.0,
+            "median": 23876.0,
+            "p99": 25036.0,
+            "max": 25036.0
+          }
+        }
+      }
+    },
+    {
+      "depth": 2,
+      "axis_width": 512,
+      "seeds": [
+        29
+      ],
+      "stress_seed": 29,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 4,
+      "axis_width": 512,
+      "seeds": [
+        101
+      ],
+      "stress_seed": 101,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    },
+    {
+      "depth": 4,
+      "axis_width": 512,
+      "seeds": [
+        11
+      ],
+      "stress_seed": 11,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {
+        "64": {
+          "wqe_per_second": 2341920.37470726,
+          "payload_bytes_per_second": 149882903.98126465,
+          "steady_interval_ns": 34160.0,
+          "commit_latency_ns": {
+            "min": 1816.0,
+            "median": 6816.0,
+            "p99": 7656.0,
+            "max": 7656.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 2100840.336134454,
+          "payload_bytes_per_second": 3180672268.907563,
+          "steady_interval_ns": 38080.0,
+          "commit_latency_ns": {
+            "min": 2016.0,
+            "median": 7596.0,
+            "p99": 8456.0,
+            "max": 8456.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 971817.2983479106,
+          "payload_bytes_per_second": 8954324586.977648,
+          "steady_interval_ns": 82320.0,
+          "commit_latency_ns": {
+            "min": 3116.0,
+            "median": 16456.0,
+            "p99": 18536.0,
+            "max": 18536.0
+          }
+        }
+      }
+    },
+    {
+      "depth": 4,
+      "axis_width": 512,
+      "seeds": [
+        29
+      ],
+      "stress_seed": 29,
+      "stress_count_per_seed": 1024,
+      "data_status_delay_ns": 400,
+      "mac_completion_delay_ns": 1000,
+      "cq_status_delay_ns": 128,
+      "frames": {}
+    }
+  ],
+  "phase_wait_metrics": [
+    {
+      "depth": 1,
+      "axis_width": 256,
+      "clock_period_ns": 4,
+      "wqe_per_length": 96,
+      "note": "Per-cycle occupancy of wait conditions; overlapping conditions are not additive.",
+      "frames": {
+        "64": {
+          "observed_cycles": 41039,
+          "sq_descriptor_ready": 94,
+          "sq_data_or_status": 1825,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 9984,
+          "axis_ready": 98,
+          "mac_completion_pending": 24866,
+          "cq_descriptor_ready": 0,
+          "cq_status_pending": 3456
+        },
+        "1514": {
+          "observed_cycles": 49774,
+          "sq_descriptor_ready": 0,
+          "sq_data_or_status": 1728,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 11040,
+          "axis_ready": 3360,
+          "mac_completion_pending": 32544,
+          "cq_descriptor_ready": 96,
+          "cq_status_pending": 3456
+        },
+        "9214": {
+          "observed_cycles": 95914,
+          "sq_descriptor_ready": 32,
+          "sq_data_or_status": 1792,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 16800,
+          "axis_ready": 20640,
+          "mac_completion_pending": 72864,
+          "cq_descriptor_ready": 96,
+          "cq_status_pending": 3456
+        }
+      }
+    },
+    {
+      "depth": 2,
+      "axis_width": 256,
+      "clock_period_ns": 4,
+      "wqe_per_length": 96,
+      "note": "Per-cycle occupancy of wait conditions; overlapping conditions are not additive.",
+      "frames": {
+        "64": {
+          "observed_cycles": 20604,
+          "sq_descriptor_ready": 47,
+          "sq_data_or_status": 1777,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 7741,
+          "axis_ready": 51,
+          "mac_completion_pending": 15134,
+          "cq_descriptor_ready": 46,
+          "cq_status_pending": 3526
+        },
+        "1514": {
+          "observed_cycles": 24999,
+          "sq_descriptor_ready": 2,
+          "sq_data_or_status": 1731,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 9821,
+          "axis_ready": 3363,
+          "mac_completion_pending": 20640,
+          "cq_descriptor_ready": 95,
+          "cq_status_pending": 3456
+        },
+        "9214": {
+          "observed_cycles": 49419,
+          "sq_descriptor_ready": 48,
+          "sq_data_or_status": 1799,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 16699,
+          "axis_ready": 20664,
+          "mac_completion_pending": 49138,
+          "cq_descriptor_ready": 72,
+          "cq_status_pending": 3456
+        }
+      }
+    },
+    {
+      "depth": 4,
+      "axis_width": 256,
+      "clock_period_ns": 4,
+      "wqe_per_length": 96,
+      "note": "Per-cycle occupancy of wait conditions; overlapping conditions are not additive.",
+      "frames": {
+        "64": {
+          "observed_cycles": 10474,
+          "sq_descriptor_ready": 47,
+          "sq_data_or_status": 1777,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 6637,
+          "axis_ready": 57,
+          "mac_completion_pending": 10161,
+          "cq_descriptor_ready": 44,
+          "cq_status_pending": 3569
+        },
+        "1514": {
+          "observed_cycles": 12754,
+          "sq_descriptor_ready": 4,
+          "sq_data_or_status": 1736,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 9108,
+          "axis_ready": 3366,
+          "mac_completion_pending": 12527,
+          "cq_descriptor_ready": 94,
+          "cq_status_pending": 3456
+        },
+        "9214": {
+          "observed_cycles": 49424,
+          "sq_descriptor_ready": 47,
+          "sq_data_or_status": 1801,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 16497,
+          "axis_ready": 20664,
+          "mac_completion_pending": 49138,
+          "cq_descriptor_ready": 72,
+          "cq_status_pending": 3456
+        }
+      }
+    },
+    {
+      "depth": 1,
+      "axis_width": 512,
+      "clock_period_ns": 4,
+      "wqe_per_length": 96,
+      "note": "Per-cycle occupancy of wait conditions; overlapping conditions are not additive.",
+      "frames": {
+        "64": {
+          "observed_cycles": 41039,
+          "sq_descriptor_ready": 95,
+          "sq_data_or_status": 1729,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 9984,
+          "axis_ready": 96,
+          "mac_completion_pending": 24768,
+          "cq_descriptor_ready": 192,
+          "cq_status_pending": 3456
+        },
+        "1514": {
+          "observed_cycles": 45739,
+          "sq_descriptor_ready": 0,
+          "sq_data_or_status": 1728,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 11040,
+          "axis_ready": 1632,
+          "mac_completion_pending": 28512,
+          "cq_descriptor_ready": 96,
+          "cq_status_pending": 3456
+        },
+        "9214": {
+          "observed_cycles": 71724,
+          "sq_descriptor_ready": 33,
+          "sq_data_or_status": 1791,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 16800,
+          "axis_ready": 10272,
+          "mac_completion_pending": 48672,
+          "cq_descriptor_ready": 96,
+          "cq_status_pending": 3456
+        }
+      }
+    },
+    {
+      "depth": 2,
+      "axis_width": 512,
+      "clock_period_ns": 4,
+      "wqe_per_length": 96,
+      "note": "Per-cycle occupancy of wait conditions; overlapping conditions are not additive.",
+      "frames": {
+        "64": {
+          "observed_cycles": 20599,
+          "sq_descriptor_ready": 95,
+          "sq_data_or_status": 1729,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 7789,
+          "axis_ready": 96,
+          "mac_completion_pending": 15181,
+          "cq_descriptor_ready": 97,
+          "cq_status_pending": 3570
+        },
+        "1514": {
+          "observed_cycles": 22949,
+          "sq_descriptor_ready": 48,
+          "sq_data_or_status": 1728,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 8317,
+          "axis_ready": 1586,
+          "mac_completion_pending": 17030,
+          "cq_descriptor_ready": 142,
+          "cq_status_pending": 3468
+        },
+        "9214": {
+          "observed_cycles": 36139,
+          "sq_descriptor_ready": 49,
+          "sq_data_or_status": 1776,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 16699,
+          "axis_ready": 10272,
+          "mac_completion_pending": 35857,
+          "cq_descriptor_ready": 96,
+          "cq_status_pending": 3456
+        }
+      }
+    },
+    {
+      "depth": 4,
+      "axis_width": 512,
+      "clock_period_ns": 4,
+      "wqe_per_length": 96,
+      "note": "Per-cycle occupancy of wait conditions; overlapping conditions are not additive.",
+      "frames": {
+        "64": {
+          "observed_cycles": 10469,
+          "sq_descriptor_ready": 93,
+          "sq_data_or_status": 1732,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 6663,
+          "axis_ready": 96,
+          "mac_completion_pending": 10161,
+          "cq_descriptor_ready": 96,
+          "cq_status_pending": 3609
+        },
+        "1514": {
+          "observed_cycles": 11649,
+          "sq_descriptor_ready": 48,
+          "sq_data_or_status": 1731,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 6928,
+          "axis_ready": 1589,
+          "mac_completion_pending": 11342,
+          "cq_descriptor_ready": 141,
+          "cq_status_pending": 3508
+        },
+        "9214": {
+          "observed_cycles": 25229,
+          "sq_descriptor_ready": 48,
+          "sq_data_or_status": 1798,
+          "mr_response": 96,
+          "payload_descriptor_ready": 0,
+          "payload_status_pending": 16497,
+          "axis_ready": 10296,
+          "mac_completion_pending": 24946,
+          "cq_descriptor_ready": 72,
+          "cq_status_pending": 3456
+        }
+      }
+    }
+  ],
+  "reference_metrics": [
+    {
+      "reference_revision": "0784146c",
+      "axis_width": 256,
+      "frames": {
+        "64": {
+          "wqe_per_second": 585480.093676815,
+          "commit_latency_ns": {
+            "min": 1836.0,
+            "max": 27456.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 479386.3854266539,
+          "commit_latency_ns": {
+            "min": 2196.0,
+            "max": 33496.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 249750.24975024976,
+          "commit_latency_ns": {
+            "min": 4116.0,
+            "max": 64176.0
+          }
+        }
+      }
+    },
+    {
+      "reference_revision": "0784146c",
+      "axis_width": 256,
+      "frames": {
+        "64": {
+          "wqe_per_second": 585480.093676815,
+          "commit_latency_ns": {
+            "min": 1836.0,
+            "max": 27456.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 479386.3854266539,
+          "commit_latency_ns": {
+            "min": 2196.0,
+            "max": 33496.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 249750.24975024976,
+          "commit_latency_ns": {
+            "min": 4116.0,
+            "max": 64176.0
+          }
+        }
+      }
+    },
+    {
+      "reference_revision": "0784146c",
+      "axis_width": 512,
+      "frames": {
+        "64": {
+          "wqe_per_second": 585480.093676815,
+          "commit_latency_ns": {
+            "min": 1836.0,
+            "max": 27456.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 521376.4337851929,
+          "commit_latency_ns": {
+            "min": 2036.0,
+            "max": 30796.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 333778.3711615487,
+          "commit_latency_ns": {
+            "min": 3096.0,
+            "max": 48036.0
+          }
+        }
+      }
+    },
+    {
+      "reference_revision": "0784146c",
+      "axis_width": 512,
+      "frames": {
+        "64": {
+          "wqe_per_second": 585480.093676815,
+          "commit_latency_ns": {
+            "min": 1836.0,
+            "max": 27456.0
+          }
+        },
+        "1514": {
+          "wqe_per_second": 521376.4337851929,
+          "commit_latency_ns": {
+            "min": 2036.0,
+            "max": 30796.0
+          }
+        },
+        "9214": {
+          "wqe_per_second": 333778.3711615487,
+          "commit_latency_ns": {
+            "min": 3096.0,
+            "max": 48036.0
+          }
+        }
+      }
+    }
+  ],
+  "pytest_cases": 64,
+  "functional_cocotb_count": 74,
+  "performance_summary": [
+    {
+      "axis_width": 256,
+      "length": 64,
+      "wqe_per_second": {
+        "1": 585480.093676815,
+        "2": 1170960.18735363,
+        "4": 2341920.37470726
+      },
+      "depth_4_over_1": 4.0
+    },
+    {
+      "axis_width": 256,
+      "length": 1514,
+      "wqe_per_second": {
+        "1": 482625.4826254826,
+        "2": 965250.9652509652,
+        "4": 1930501.9305019304
+      },
+      "depth_4_over_1": 4.0
+    },
+    {
+      "axis_width": 256,
+      "length": 9214,
+      "wqe_per_second": {
+        "1": 250344.22330704718,
+        "2": 490918.01669121254,
+        "4": 490918.01669121254
+      },
+      "depth_4_over_1": 1.9609720176730485
+    },
+    {
+      "axis_width": 512,
+      "length": 64,
+      "wqe_per_second": {
+        "1": 585480.093676815,
+        "2": 1170960.18735363,
+        "4": 2341920.37470726
+      },
+      "depth_4_over_1": 4.0
+    },
+    {
+      "axis_width": 512,
+      "length": 1514,
+      "wqe_per_second": {
+        "1": 525210.0840336134,
+        "2": 1050420.168067227,
+        "4": 2100840.336134454
+      },
+      "depth_4_over_1": 4.0
+    },
+    {
+      "axis_width": 512,
+      "length": 9214,
+      "wqe_per_second": {
+        "1": 334840.1138456387,
+        "2": 669680.2276912774,
+        "4": 971817.2983479106
+      },
+      "depth_4_over_1": 2.9023323615160352
+    }
+  ],
+  "explicit_matrix_validation": {
+    "functional_runs": 60,
+    "functional_cocotb_cases": 74,
+    "pytest_cases_including_runner_contracts": 64,
+    "unique_xml_per_manifest": true,
+    "named_module_parameter_scenario_matrix": true,
+    "performance_gate_recomputed": true
+  },
+  "additional_python_models": {
+    "source_sha256": {
+      "fpga/mqnic/Alveo/fpga_100g/tb/fpga_core/test_fpga_core.py": "932ea9b7cd8bf41322e56e5f28e06ff131a703a92fbb2f9189260d432419c4ce",
+      "fpga/common/tb/mqnic.py": "7d916693870fd1592aa91622a73a2a64b626635c351c47f8470f18ad52617303",
+      "fpga/lib/pcie/tb/dma_psdp_ram.py": "43f0546c112458223dd7b4dfd74148e7df4dffb7c998301df3212be2a5476074"
+    },
+    "checked_against_revision": "c1f6bb6164d59bb9e3325d6eabad6a4e097c929e",
+    "capture_scope": "Captured at final acceptance; not captured in each simulation source manifest.",
+    "limitation": "These hashes identify current versioned external models, not their contents at every simulator startup."
+  },
+  "acceptance_validator_sha256": "6aaa43724e7071177d9836f00efe657e7da79524f0ab532fa1cf445c859e6cfe",
+  "acceptance_date_local": "2026-10-03 Asia/Shanghai",
+  "regression_wall_seconds": 2984.51,
+  "regression_workers": 2,
+  "environment": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:31:56) [GCC 14.3.0]",
+    "packages": {
+      "pytest": "7.2.1",
+      "pytest-xdist": "3.1.0",
+      "cocotb": "1.7.2",
+      "cocotb-test": "0.2.4",
+      "cocotbext-axi": "0.1.24",
+      "cocotbext-pcie": "0.2.14",
+      "cocotbext-eth": "0.1.22"
+    },
+    "icarus": "Icarus Verilog version 12.0 (stable) ()",
+    "capture_scope": "Version metadata read at final acceptance; packages were not changed during this run."
+  }
+}

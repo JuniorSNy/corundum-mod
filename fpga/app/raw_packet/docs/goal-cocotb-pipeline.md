@@ -159,3 +159,9 @@ make -C tb/fpga_core PYTHON_BIN=/home/sj/miniforge3/envs/corundum-test/bin/pytho
 本轮未重新执行 G0 完整回归，尚未实现多在途，也未执行 Vivado 或上板。
 
 随后开始实施；当前进度与运行记录见 `pipeline-validation.md`。以上为目标设计时的历史状态。
+
+2026-10-03 完成：实现 `c1f6bb61` 的完整回归正常退出（64 pytest passed、74 个功能 cocotb 场景，
+2984.51 s），G0..G4 所需组合、18 组各 1024 WQE、真正帧中途 STOP、四槽 CQ fatal 和
+排空/复位竞态、双端口持续共存、app-enabled Alveo 原 NIC 回归均通过。最终矩阵、源码 SHA
+和固定模型性能门禁已独立核对，见 [流水线验证记录](pipeline-validation.md) 与
+[机器可读报告](pipeline-results-20261002.json)。保留上述设计边界，无 Vivado/上板或系统级恢复声明。
